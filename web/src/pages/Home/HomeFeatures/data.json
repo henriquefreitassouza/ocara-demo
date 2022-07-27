@@ -1,0 +1,20 @@
+[
+  {
+    "id": 0,
+    "icon": "book",
+    "title": "Livros para todos os gostos",
+    "description": "Descubra novos livros, leia as resenhas e saiba o que estão falando"
+  },
+  {
+    "id": 1,
+    "icon": "user",
+    "title": "Converse sobre o que está lendo",
+    "description": "Entre nas comunidades literárias e conheça pessoas que estão lendo o mesmo livro que você"
+  },
+  {
+    "id": 2,
+    "icon": "calendar",
+    "title": "Participe de eventos literários",
+    "description": "Descubra novas experiências literárias participando das rodas de leitura, feiras literárias, saraus e diversas outras atividades"
+  }
+]
