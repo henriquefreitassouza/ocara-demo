@@ -7,7 +7,7 @@ require("dotenv").config();
 class App {
   constructor() {
     this.app = express();
-    this.port = process.env.SERVER_PORT || process.env.PORT || 8080;
+    this.port = process.env.PORT || 8080;
     this.version = "v1"
     this.paths = {
       s3: `/${this.version}/s3`,
