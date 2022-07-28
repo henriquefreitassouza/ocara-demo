@@ -21,7 +21,7 @@
     "mongodb": "^4.7.0",
     "mongoose": "^6.2.9"
   },
-  "engine": {
+  "engines": {
     "node": "16.x",
     "npm": "8.x"
   }

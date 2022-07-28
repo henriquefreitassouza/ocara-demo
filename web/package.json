@@ -46,7 +46,7 @@
     "autoprefixer": "^10.4.5",
     "postcss": "^8.4.12"
   },
-  "engine": {
+  "engines": {
     "node": "16.x",
     "npm": "8.x"
   }

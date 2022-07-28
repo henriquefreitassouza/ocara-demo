@@ -22,7 +22,7 @@
     "url": "https://github.com/henriquefreitassouza/ocara-demo/issues"
   },
   "homepage": "https://github.com/henriquefreitassouza/ocara-demo#readme",
-  "engine": {
+  "engines": {
     "node": "16.x",
     "npm": "8.x"
   }
