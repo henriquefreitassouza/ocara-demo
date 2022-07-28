@@ -1,0 +1,22 @@
+{
+  "name": "ocara",
+  "version": "1.0.0",
+  "description": "Monorepo containing both the web app and the api",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "if [ $CLIENT_ENV ]; then npm run postinstall-web; elif [ $SERVER_ENV ]; then npm run postinstall-app; else echo no environment detected, please set CLIENT_ENV or SERVER_ENV; fi",
+    "postinstall-web": "cd ocara/web && npm install && npm run build",
+    "postinstall-app": "cd ocara/app && npm install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/henriquefreitassouza/ocara-demo.git"
+  },
+  "author": "Henrique Freitas Souza",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/henriquefreitassouza/ocara-demo/issues"
+  },
+  "homepage": "https://github.com/henriquefreitassouza/ocara-demo#readme"
+}

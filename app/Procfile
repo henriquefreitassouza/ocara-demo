@@ -1,0 +1,1 @@
+web: cd ocara/app && node index.js
