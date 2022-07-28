@@ -4,13 +4,9 @@
   "description": "Monorepo containing both the web app and the api",
   "main": "index.js",
   "scripts": {
-    "test": "react-scripts test",
     "postinstall": "if [ $CLIENT_ENV ]; then npm run postinstall-web; elif [ $SERVER_ENV ]; then npm run postinstall-app; else echo no environment detected, please set CLIENT_ENV or SERVER_ENV; fi",
     "postinstall-web": "cd web && npm install && npm run build",
-    "postinstall-app": "cd app && npm install",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "eject": "react-scripts eject"
+    "postinstall-app": "cd app && npm install"
   },
   "repository": {
     "type": "git",
@@ -25,8 +21,5 @@
   "engines": {
     "node": "16.x",
     "npm": "8.x"
-  },
-  "devDependencies": {
-    "react-scripts": "^5.0.1"
   }
 }
