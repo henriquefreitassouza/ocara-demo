@@ -47,6 +47,7 @@
     "postcss": "^8.4.12"
   },
   "engine": {
-    "node": "17.x"
+    "node": "16.x",
+    "npm": "8.x"
   }
 }

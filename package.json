@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/henriquefreitassouza/ocara-demo#readme",
   "engine": {
-    "node": "17.x"
+    "node": "16.x",
+    "npm": "8.x"
   }
 }
