@@ -1,1 +1,1 @@
-web: cd ocara/web && npm build
+web: cd web && npm build
