@@ -64,7 +64,7 @@ class App {
   }
 
   listen() {
-    this.app.listen(this.port, () => {
+    this.app.listen(this.port || 8080, () => {
       console.log(`Server listening on ${this.port}`);
     });
   }
