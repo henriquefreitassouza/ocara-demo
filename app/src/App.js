@@ -7,7 +7,7 @@ require("dotenv").config();
 class App {
   constructor() {
     this.app = express();
-    this.port = process.env.SERVER_PORT;
+    this.port = process.env.SERVER_PORT || process.env.PORT || 8080;
     this.version = "v1"
     this.paths = {
       s3: `/${this.version}/s3`,
@@ -64,7 +64,7 @@ class App {
   }
 
   listen() {
-    this.app.listen(this.port || 8080, () => {
+    this.app.listen(this.port, () => {
       console.log(`Server listening on ${this.port}`);
     });
   }
