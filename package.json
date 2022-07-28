@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "react-scripts test",
-    "postinstall": "postinstall": "if [ $CLIENT_ENV ]; then npm run postinstall-web; elif [ $SERVER_ENV ]; then npm run postinstall-app; else echo no environment detected, please set CLIENT_ENV or SERVER_ENV; fi",
+    "postinstall": "if [ $CLIENT_ENV ]; then npm run postinstall-web; elif [ $SERVER_ENV ]; then npm run postinstall-app; else echo no environment detected, please set CLIENT_ENV or SERVER_ENV; fi",
     "postinstall-web": "cd web && npm install && npm run build",
     "postinstall-app": "cd app && npm install && node index.js",
     "start": "react-scripts start",
