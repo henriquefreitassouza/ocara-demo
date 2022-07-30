@@ -68,6 +68,8 @@ Quaisquer recursos do módulo podem fazer uso das funções utilitárias present
 
 ![Diagrama de entidades e relacionamentos do banco de dados](/docs/ocara-4-database-design.png)
 
+### Entidades
+
 O banco de dados escolhido para montar a aplicação foi o **MongoDB**. Este banco possui as seguintes entidades:
 
 - **Api**: Armazena dados de usuários da API. No momento, não está em uso;
@@ -79,7 +81,200 @@ O banco de dados escolhido para montar a aplicação foi o **MongoDB**. Este ban
 - **Community**: Armazena dados de clubes de leitura;
 - **Member**: Armazena dados de membros cadastrados nos clubes de leitura.
 
-E os relacionamentos entre as entidades são:
+As entidades são modeladas como `collections` no MongoDB, e os documentos destas collections possuem a seguinte estrutura:
+
+#### Api
+
+```
+{
+  schema_version: Number,
+  email: String,
+  password: String,
+  created_at: { type: Date, default: Date.now },
+  last_active_at: { type: Date, default: Date.now }
+}
+```
+
+#### Account
+```
+{
+  schema_version: Number,
+  email: {
+    type: String,
+    trim: true,
+    lowercase: true,
+    unique: true,
+    required: 'O endereço de e-mail é obrigatório',
+    validate: [Validate.validateEmail, 'Digite um endereço de e-mail válido'] //Validate.validateEmail é uma expressão regular que verifica se o e-mail é válido
+  },
+  password: {
+    type: String,
+    min: [6, 'A senha deve conter no mínimo 6 caracteres']
+  },
+  created_at: { type: Date, default: Date.now },
+  last_active_at: { type: Date, default: Date.now },
+  verified: Boolean,
+  active: Boolean,
+  suspended: Boolean,
+  stats: {
+    total_accesses: Number,
+  }
+}
+```
+
+#### User
+```
+{
+  schema_version: Number,
+  name: String,
+  surname: String,
+  picture: String,
+  cover: String,
+  bio: String,
+  created_at: { type: Date, default: Date.now },
+  account: { type: Schema.Types.ObjectId, ref: "Account" },
+  stats: {
+    total_comments: Number,
+    total_rsvp: Number,
+    total_events: Number
+  }
+}
+```
+
+#### Book
+```
+{
+  schema_version: Number,
+  title: String,
+  isbn: String,
+  publisher: String,
+  author: [{
+    name: String,
+    role: String
+  }],
+  genre: String,
+  edition: String,
+  year_published: Number,
+  taxonomies: [{
+    type: String,
+    name: String
+  }],
+  excerpt: String,
+  namespace: String,
+  cover: String,
+  user: { type: Schema.Types.ObjectId, ref: "User"},
+  stats: {
+    total_views: Number
+  }
+}
+```
+
+#### Topic
+```
+{
+  schema_version: Number,
+  title: String,
+  description: String,
+  member: { type: Schema.Types.ObjectId, ref: "Member" },
+  open: Boolean,
+  created_at: { type: Date, default: Date.now },
+  community: String,
+  comments: [{
+    description: String,
+    member: { type: Schema.Types.ObjectId, ref: "Member" },
+    stats: {
+      total_likes: Number
+    }
+  }],
+  stats: {
+    total_comments: Number
+  },
+}
+```
+
+#### Event
+```
+{
+  schema_version: Number,
+  title: String,
+  date: Date,
+  online: Boolean,
+  cover: String,
+  place: {
+    address: String,
+    number: String,
+    reference: String,
+    neighborhood: String,
+    city: String,
+    state: String,
+    country: String,
+    postal_code: String
+  },
+  member: { type: Schema.Types.ObjectId, ref: "Member" },
+  community: String,
+  namespace: String,
+  description: String,
+  user: { type: Schema.Types.ObjectId, ref: "User" },
+  rsvp_list: [{
+    member: { type: Schema.Types.ObjectId, ref: "Member" },
+    status: String,
+    confirmed: Boolean
+  }],
+  stats: {
+    total_rsvp: Number,
+    total_participants: Number
+  }
+}
+```
+
+#### Community
+```
+{
+  schema_version: Number,
+  name: String,
+  excerpt: String,
+  description: String,
+  namespace: String,
+  picture: String,
+  cover: String,
+  member_list: [{
+    member: { type: Schema.Types.ObjectId, ref: "Member" }
+  }],
+  created_at: { type: Date, default: Date.now },
+  user: { type: Schema.Types.ObjectId, ref: "User"},
+  stats: {
+    total_members: Number,
+    total_active_members: Number,
+    total_suspended_members: Number
+  }
+}
+```
+
+#### Member
+```
+{
+  schema_version: Number,
+  user: { type: Schema.Types.ObjectId, ref: "User" },
+  name: String,
+  surname: String,
+  bio: String,
+  picture: String,
+  badge: String,
+  role: String,
+  community: String,
+  active: Boolean,
+  suspended: Boolean,
+  stats: {
+    total_comments: Number,
+    total_rsvp: Number,
+    total_events: Number
+  }
+}
+```
+
+### Relacionamentos
+
+Os relacionamentos entre as entidades são:
 
 - Cada usuário (User) está associado a uma conta (Account), e cada conta está associada a um usuário;
 - Cada usuário (User) pode escrever zero, uma ou mais resenhas de livros (Book), e cada resenha é escrita por um usuário;
