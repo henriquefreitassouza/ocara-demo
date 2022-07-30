@@ -61,7 +61,7 @@ Dentro da pasta `src` vive a aplicação, que está organizada da seguinte manei
 
 ### Relacionamento entre as partes do módulo
 
-![Arquitetura de desenvolvimento e deploy da Ocara](/docs/ocara-2-react-app-design.png)
+![Organização do módulo web](/docs/ocara-2-react-app-design.png)
 
 Ao iniciar, o app chama o **orquestrador de rotas**, que serve as páginas conforme os endereços requisitados. Cada página é representada por uma rota, que fica dentro da pasta `routes`. Cada rota serve uma **página** do diretório `pages`. Páginas são formadas por **seções** e cada seção possui um diretório dentro da página a qual pertence. Uma seção faz uso de um ou mais **componentes**, que ficam dentro do diretório `components`.
 
