@@ -5,7 +5,7 @@
 O módulo App é o gestor de dados da Ocara. Ele recebe as requisições do módulo [Web](../web), faz a gestão destas requisições, busca os dados solicitados no banco e os retorna para o solicitante. Este módulo segue o padrão de desenvolvimento *Backend for Frontend*.
 
 Este módulo foi criado com [Express](https://expressjs.com/) 4.17.3 e faz uso de diversos pacotes que adicionam funcionalidades ao módulos:
-- [AWS SDK](https://www.npmjs.com/package/aws-sdk): Utilitário da Amazon Web Services para manipulação dos serviços em nuvem da empresa. O SDK é utilizado para acessar o S3, serviços de armazenamento de arquivos, e guardar ou recuperar imagens salvas pelos usuários. Utiliza a versão 2.1181.0;
+- [AWS SDK](https://www.npmjs.com/package/aws-sdk): Utilitário da AWS para manipulação dos serviços em nuvem da empresa. O SDK é utilizado para acessar o S3, serviços de armazenamento de arquivos, e guardar ou recuperar imagens salvas pelos usuários. Utiliza a versão 2.1181.0;
 - [Bcrypt](https://www.npmjs.com/package/bcrypt): Gera e valida hashes a partir de dados passados. Usado para gravar e validar senhas. Utiliza a versão 5.0.1;
 - [Cors](https://www.npmjs.com/package/cors): Gera os cabeçalhos com as regras de acesso a dados entre domínios. Utiliza a versão 2.8.5;
 - [Dotenv](https://www.npmjs.com/package/dotenv): Acrescenta as variáveis de ambiente aquelas definidas em arquivos `.env`. Utiliza a versão 16.0.0;
@@ -55,7 +55,9 @@ E os diretórios:
 
 ![Organização do módulo app](/docs/ocara-3-api-design.png)
 
-Ao iniciar, o app carrega as **rotas** e os **middlewares** das pastas `routes` e `middlewares`, respectivamente, e abre uma porta para escuta de solicitações. Cada rota é associada a um dos **controladores** presentes na pasta `controllers`. Os controladores acessam **dados** que estão hospedados em uma instância do MongoDB na plataforma de dados [Atlas](https://www.mongodb.com/atlas) utilizando os recursos da pasta `db`, que manipulam os **modelos** de dados definidos na pasta `models`. Os controladores também armazenam e recuperam imagens hospedadas em um bucket do [S3](https://aws.amazon.com/s3/), serviço de armazenamento de dados da [Amazon Web Services](https://aws.amazon.com/).
+Ao iniciar, o app carrega as **rotas** e os **middlewares** das pastas `routes` e `middlewares`, respectivamente, e abre uma porta para escuta de solicitações. Cada rota é associada a um dos **controladores** presentes na pasta `controllers`. Os controladores acessam **dados** que estão hospedados em uma instância do MongoDB na plataforma de dados [Atlas](https://www.mongodb.com/atlas) utilizando os recursos da pasta `db`, que manipulam os **modelos** de dados definidos na pasta `models`. Os controladores também armazenam e recuperam imagens hospedadas em um bucket do [S3](https://aws.amazon.com/s3/), serviço de armazenamento de dados da [Amazon Web Services (AWS)](https://aws.amazon.com/).
+
+Para utilizar as rotas que dependem do S3, é necessário criar uma conta na AWS e obter as credenciais para acesso aos serviços de forma remota.
 
 Requisições para cadastro e atualização de dados passam por **validadores**, que garantem a presença dos dados necessários no corpo ou URL da requisição para que a requisição ao banco de dados possa ser feita. Os validadores ficam na pasta `validators`.
 
@@ -300,7 +302,7 @@ Este módulo possui implementado o sistema de autenticação por tokens JSON, ma
 
 Para habilitar a autenticação nas rotas, basta incluir o *middleware* `tokenMiddleware` como parâmetro em cada rota que precisa de autenticação ou chamar o *middleware* dentro de `src/App.js` para forçar a validação de token em todas as rotas.
 
-Ao habilitar a autenticação das rotas, será necessário criar um sistema de renovação de tokens, que hoje não existe neste módulo.
+Ao habilitar a autenticação das rotas, será necessário criar um sistema de renovação ou geração de tokens, que hoje não existe neste módulo.
 
 ## Configurações
 
@@ -319,6 +321,60 @@ Este módulo depende da existência de algumas variáveis de ambiente. Aqui est�
 - **PROCFILE** [produção]: Informa onde está o arquivo Procfile com as instruções de inicialização da aplicação no dyno Heroku. Esta variável é setada no dyno ao utilizar o utilitário de linha de comando do Heroku para informar onde está o Procfile;
 - **SERVER_ENV** [produção]: Deve receber o valor `true`. Informa ao Heroku que este módulo é o módulo do lado servidor da aplicação;
 
-## Rotas
+## Usando a API
 
-Em breve algo incrível será escrito aqui :)
+### Requisição
+
+A API está configurada para receber e retornar objetos JSON. O seguinte cabeçalho deve ser enviado a cada requisição:
+
+```
+Content-Type: application/json
+```
+
+Quando a rota solicitar um *payload*, envie-o da seguinte maneira:
+
+```
+JSON.stringify({
+  field1: value1,
+  field2: value1
+});
+```
+
+### Retorno
+
+Todas as rotas têm como retorno um objeto JSON com a seguinte estrutura:
+
+```
+{
+  "result": "[result]",
+  "body": "[body]"
+}
+```
+
+A propriedade `result` pode receber um de dois valores: "`success`" ou "`error`". O retorno `success` acontece quando a requisição foi atendida **e há dados de retorno**. A API retorna `error` quando houve falha na requisição ou **não há dados de retorno**.
+
+A propriedade `body` recebe um de três possíveis tipos de valores: `string`, `object` ou `array`. Quando `result` é `error`, `body` recebe um texto com o motivo do erro. Quando `result` é `success`, `body` recebe um objeto ou lista a depender da rota chamada. Algumas rotas retornam um objeto com apenas um resultado, enquanto outras retornam uma lista de objetos.
+
+Mensagens de erro por validação chegam em uma lista de objetos, e cada objeto da lista possui a seguinte estrutura:
+
+```
+{
+    "msg": "[mensagem]",
+    "param": "[parâmetro]",
+    "location": "body"
+}
+```
+
+Os retornos `msg` e `param` contém a mensagem de erro e qual o campo do *payload* da requisição chegaram com erros, respectivamente.
+
+### Códigos de retorno
+
+| Código | Retorno |
+| --- | --- |
+| 200 | Requisição e retorno feitos com sucesso |
+| 400 | Requisição não autorizada ou inválida |
+| 500 | Requisição com erro do lado do servidor |
+
+### Rotas
+
+Algo incrível será escrito aqui logo mais :)
