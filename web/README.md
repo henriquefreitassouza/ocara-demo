@@ -72,3 +72,20 @@ Por fim, funções utilitárias são usadas por quaisquer arquivos que precisem 
 - **handle**: utilitários que recebem e tratam dados;
 - **sanitize**: utilitários que formatam dados;
 - **validate**: utilitários que validam dados.
+
+## Instalação
+
+Para utilizar este módulo, clone este repositório com o comando `git clone`, faça a instalação das dependências utilizando o comando `npm install` e configure as variáveis de ambiente descritas na seção [Configurações](#configurações).
+
+Este módulo depende do módulo App para exibir dados do banco. Faça a instalação e a configuração dele seguindo as instruções descritas na página do módulo.
+
+Com os dois módulos instalados e configurados na máquina local, abra um terminal, navegue até a pasta do módulo Web e digite `npm start` para iniciar o módulo no servidor local. Abra um novo terminal e repita o procedimento para o módulo App, o que dará início ao servidor da API.
+
+## Configurações
+
+Este módulo depende da existência de algumas variáveis de ambiente. Aqui estão descritas as variáveis e em qual(ais) ambiente(s) elas devem existir:
+- **CLIENT_ENV** [produção]: Deve receber o valor `true`. Informa ao Heroku que este módulo é o módulo do lado cliente da aplicação;
+- **NODE_OPTIONS** [produção]: Opcional, apenas para algumas versões do Node. Deve receber o valor `--max-old-space-size=[size]`, sendo [size] o volume de memória RAM alocado para o ambiente. Esta variável está configurada no Heroku;
+- **PORT** [produção]: Informa qual a porta que deve receber solicitações de clientes. No ambiente de desenvolvimento, a porta padrão é a 3000, mas pode ser modificada também em desenvolvimento utlizando esta mesma variável;
+- **PROCFILE** [produção]: Informa onde está o arquivo Procfile com as instruções de inicialização da aplicação no dyno Heroku. Esta variável é setada no dyno ao utilizar o utilitário de linha de comando do Heroku para informar onde está o Procfile.
+- **REACT_APP_API_ADDRESS**: [desenvolvimento / produção]: Informa qual é o endereço base da API que contém os dados utilizados por este módulo.

@@ -15,7 +15,7 @@ A Ocara existe para estimular conversas sobre livros, pois são estas conversas 
 ## Sobre este repositório
 
 ```
-ocara
+ocara-demo
 ├── app
 ├── docs
 ├── .git
@@ -33,7 +33,9 @@ O projeto está organizado em dois grandes projetos, aqui chamados de **módulos
 
 O repositório que agrupa os módulos é, também, um pacote, mas não possui dependências.
 
-Na pasta `docs` estão guardadas as imagens usadas para a construção desta e das documentações dos módulos
+Na pasta `docs` estão guardadas as imagens usadas para a construção das documentações neste arquivo e nos arquivos `README.md` dos módulos.
+
+A pasta `.git` e o arquivo `.gitignore` existem apenas no ambiente local.
 
 Para iniciar o projeto em sua máquina local, é necessário que você tenha instalado em sua máquina os seguintes softwares:
 - Node.js 16+
