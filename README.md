@@ -14,22 +14,62 @@ A Ocara existe para estimular conversas sobre livros, pois são estas conversas 
 
 ## Sobre este repositório
 
-O projeto está organizado em dois grandes módulos:
+```
+ocara
+├── app
+├── docs
+├── .git
+├── .gitignore
+├── index.js
+├── package.json
+├── package-lock.json
+├── README.md
+└── web
+```
+
+O projeto está organizado em dois grandes projetos, aqui chamados de **módulos**:
 - [Web](https://github.com/henriquefreitassouza/ocara-demo/tree/main/web): é a interface da Ocara. Este módulo serve o conteúdo do site para os visitantes e faz a gestão da comunicação com o App.
 - [App](https://github.com/henriquefreitassouza/ocara-demo/tree/main/app): é o controlador de dados da Ocara. Este módulo administra os pedidos de acesso a dados e faz as entregas conforme cada pedido.
 
-Cada módulo vive em seu próprio repositório e a administração de cada um é feito de maneira independente. Esta é uma arquitetura **monorepo**.
+O repositório que agrupa os módulos é, também, um pacote, mas não possui dependências.
+
+Na pasta `docs` estão guardadas as imagens usadas para a construção desta e das documentações dos módulos
 
 Para iniciar o projeto em sua máquina local, é necessário que você tenha instalado em sua máquina os seguintes softwares:
 - Node.js 16+
 - NPM 8+
 - Git
 
-Com as ferramentas instaladas, basta clonar este repositório com `git clone`, entrar nas pastas de cada módulo e fazer a instalação dos pacotes utilizados pelos módulos com o comando `npm install`. Cada módulo precisa de seu próprio arquivo de configuração de variáveis, e as instruções para a instalação de cada um se encontram em seus diretórios raizes.
+Com as ferramentas instaladas, basta clonar este repositório com `git clone`, entrar nas pastas de cada módulo e fazer a instalação dos pacotes utilizados pelos módulos com o comando `npm install`. Cada módulo precisa de seu próprio arquivo de configuração de variáveis de ambiente, e as instruções para a instalação de cada um se encontram em seus diretórios raizes.
+
+## Arquitetura
+
+Cada módulo vive em seu próprio diretório dentro deste repositório e a administração de cada um é feito de maneira independente. Esta é uma arquitetura **monorepo**. Este repositório está conectado ao Heroku, serviço de gestão de apps em nuvem. O Heroku foi configurado para reconhecer a arquitetura monorepo e fazer o *deploy* de cada módulo em sua respectiva máquina, ou **dyno**.
+
+![Arquitetura de desenvolvimento e deploy da Ocara](/docs/ocara-1-architecture-design.png)
+
+### Configuração do repositório
+
+O arquivo `package.json` possui três scripts, responsáveis por informar ao Heroku qual módulo deve ser colocado em qual dyno:
+- **postinstall**: executa um comando em shell script que verifica a existência de duas variáveis de ambiente, `$CLIENT_ENV` e `$SERVER_ENV` e, com base na existência de uma ou de outra, comanda a execução dos scripts de inicialização dos módulos nos dynos do Heroku, `postinstall-web` e `postinstall-app`;
+- **postinstall-web**: entra na pasta web, faz a instalação dos pacotes necessários para o funcionamento do módulo e gera os arquivos para o ambiente de produção;
+- **postinstall-app**: entra na pasta app e faz a instalação dos pacotes necessários para o funcionamento do módulo.
+
+### Configuração do Heroku
+
+O Heroku possui dois dynos criados, um para cada módulo:
+- **ocara-api**: hospeda o módulo App;
+- **ocara-app**: hospeda o módulo Web.
+
+Cada módulo possui dois **buildpacks**, scripts que são executados logo após o *deploy* de um app:
+- **heroku-buildpack-multi-procfile**: permite a configuração de múltiplos apps em um único repositório;
+- **heroku/nodejs**: configura o ambiente da máquina como sendo um ambiente Node.
+
+Dentro de raiz de cada módulo no repositório do Github existe um arquivo chamado `Procfile`, contendo comandos que são executados após a configuração dos dynos no Heroku. Cada dyno possui uma variável de ambiente chamada `PROCFILE` que referencia o diretório de localização do Procfile.
 
 ## Deploy e demonstração
 
-Cada módulo possui um dyno no Heroku, e o módulo web da aplicação pode ser acessado pelo endereço [https://ocara-app.herokuapp.com](https://ocara-app.herokuapp.com/). O Heroku foi configurado para acessar e publicar cada módulo em um dyno diferente a partir deste repositório.
+A aplicação pode ser acessada por este endereço: [https://ocara-app.herokuapp.com](https://ocara-app.herokuapp.com/).
 
 ## E agora?
 
