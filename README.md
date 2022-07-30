@@ -27,7 +27,7 @@ ocara-demo
 └── web
 ```
 
-O projeto está organizado em dois grandes projetos, aqui chamados de **módulos**:
+O projeto está organizado em dois grandes pacotes, aqui chamados de **módulos**:
 - [Web](https://github.com/henriquefreitassouza/ocara-demo/tree/main/web): é a interface da Ocara. Este módulo serve o conteúdo do site para os visitantes e faz a gestão da comunicação com o App.
 - [App](https://github.com/henriquefreitassouza/ocara-demo/tree/main/app): é o controlador de dados da Ocara. Este módulo administra os pedidos de acesso a dados e faz as entregas conforme cada pedido.
 
@@ -46,7 +46,7 @@ Com as ferramentas instaladas, basta clonar este repositório com `git clone`, e
 
 ## Arquitetura
 
-Cada módulo vive em seu próprio diretório dentro deste repositório e a administração de cada um é feito de maneira independente. Esta é uma arquitetura **monorepo**. Este repositório está conectado ao Heroku, serviço de gestão de apps em nuvem. O Heroku foi configurado para reconhecer a arquitetura monorepo e fazer o *deploy* de cada módulo em sua respectiva máquina, ou **dyno**.
+Cada módulo vive em seu próprio diretório dentro deste repositório e a administração de cada um é feito de maneira independente. Esta é uma arquitetura **monorepo**. Este repositório está conectado ao [Heroku](https://www.heroku.com/), serviço de gestão de apps em nuvem. O Heroku foi configurado para reconhecer a arquitetura monorepo e fazer o *deploy* de cada módulo em sua respectiva máquina, ou **dyno**.
 
 ![Arquitetura de desenvolvimento e deploy da Ocara](/docs/ocara-1-architecture-design.png)
 
@@ -76,5 +76,5 @@ A aplicação pode ser acessada por este endereço: [https://ocara-app.herokuapp
 ## E agora?
 
 Acesse os repositórios dos módulos para acessar suas respectivas documentações.
-- [Web](https://github.com/henriquefreitassouza/ocara-demo/tree/main/web)
-- [App](https://github.com/henriquefreitassouza/ocara-demo/tree/main/app)
+- [Web](/web);
+- [App](/app).
