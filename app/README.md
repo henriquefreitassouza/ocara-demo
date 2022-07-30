@@ -90,10 +90,11 @@ As entidades são modeladas como `collections` no MongoDB, e os documentos desta
 ```
 {
   schema_version: Number,
+  _id: ObjectId,
   email: String,
   password: String,
-  created_at: { type: Date, default: Date.now },
-  last_active_at: { type: Date, default: Date.now }
+  created_at: Date,
+  last_active_at: Date
 }
 ```
 
@@ -101,20 +102,11 @@ As entidades são modeladas como `collections` no MongoDB, e os documentos desta
 ```
 {
   schema_version: Number,
-  email: {
-    type: String,
-    trim: true,
-    lowercase: true,
-    unique: true,
-    required: 'O endereço de e-mail é obrigatório',
-    validate: [Validate.validateEmail, 'Digite um endereço de e-mail válido'] //Validate.validateEmail é uma expressão regular que verifica se o e-mail é válido
-  },
-  password: {
-    type: String,
-    min: [6, 'A senha deve conter no mínimo 6 caracteres']
-  },
-  created_at: { type: Date, default: Date.now },
-  last_active_at: { type: Date, default: Date.now },
+  _id: ObjectId,
+  email: String,
+  password: String,
+  created_at: Date,
+  last_active_at: Date,
   verified: Boolean,
   active: Boolean,
   suspended: Boolean,
@@ -128,13 +120,14 @@ As entidades são modeladas como `collections` no MongoDB, e os documentos desta
 ```
 {
   schema_version: Number,
+  _id: ObjectId,
   name: String,
   surname: String,
   picture: String,
   cover: String,
   bio: String,
-  created_at: { type: Date, default: Date.now },
-  account: { type: Schema.Types.ObjectId, ref: "Account" },
+  created_at: Date,
+  account: ObjectId,
   stats: {
     total_comments: Number,
     total_rsvp: Number,
@@ -147,6 +140,7 @@ As entidades são modeladas como `collections` no MongoDB, e os documentos desta
 ```
 {
   schema_version: Number,
+  _id: ObjectId,
   title: String,
   isbn: String,
   publisher: String,
@@ -164,7 +158,7 @@ As entidades são modeladas como `collections` no MongoDB, e os documentos desta
   excerpt: String,
   namespace: String,
   cover: String,
-  user: { type: Schema.Types.ObjectId, ref: "User"},
+  user: ObjectId,
   stats: {
     total_views: Number
   }
@@ -175,15 +169,16 @@ As entidades são modeladas como `collections` no MongoDB, e os documentos desta
 ```
 {
   schema_version: Number,
+  _id: ObjectId,
   title: String,
   description: String,
-  member: { type: Schema.Types.ObjectId, ref: "Member" },
+  member: ObjectId,
   open: Boolean,
-  created_at: { type: Date, default: Date.now },
+  created_at: Date,
   community: String,
   comments: [{
     description: String,
-    member: { type: Schema.Types.ObjectId, ref: "Member" },
+    member: ObjectId,
     stats: {
       total_likes: Number
     }
@@ -198,6 +193,7 @@ As entidades são modeladas como `collections` no MongoDB, e os documentos desta
 ```
 {
   schema_version: Number,
+  _id: ObjectId,
   title: String,
   date: Date,
   online: Boolean,
@@ -212,13 +208,13 @@ As entidades são modeladas como `collections` no MongoDB, e os documentos desta
     country: String,
     postal_code: String
   },
-  member: { type: Schema.Types.ObjectId, ref: "Member" },
+  member: ObjectId,
   community: String,
   namespace: String,
   description: String,
-  user: { type: Schema.Types.ObjectId, ref: "User" },
+  user: ObjectId,
   rsvp_list: [{
-    member: { type: Schema.Types.ObjectId, ref: "Member" },
+    member: ObjectId,
     status: String,
     confirmed: Boolean
   }],
@@ -233,6 +229,7 @@ As entidades são modeladas como `collections` no MongoDB, e os documentos desta
 ```
 {
   schema_version: Number,
+  _id: ObjectId,
   name: String,
   excerpt: String,
   description: String,
@@ -240,10 +237,10 @@ As entidades são modeladas como `collections` no MongoDB, e os documentos desta
   picture: String,
   cover: String,
   member_list: [{
-    member: { type: Schema.Types.ObjectId, ref: "Member" }
+    member: ObjectId
   }],
-  created_at: { type: Date, default: Date.now },
-  user: { type: Schema.Types.ObjectId, ref: "User"},
+  created_at: Date,
+  user: ObjectId,
   stats: {
     total_members: Number,
     total_active_members: Number,
@@ -256,7 +253,8 @@ As entidades são modeladas como `collections` no MongoDB, e os documentos desta
 ```
 {
   schema_version: Number,
-  user: { type: Schema.Types.ObjectId, ref: "User" },
+  _id: ObjectId,
+  user: ObjectId,
   name: String,
   surname: String,
   bio: String,
@@ -351,7 +349,7 @@ Todas as rotas têm como retorno um objeto JSON com a seguinte estrutura:
 }
 ```
 
-A propriedade `result` pode receber um de dois valores: "`success`" ou "`error`". O retorno `success` acontece quando a requisição foi atendida **e há dados de retorno**. A API retorna `error` quando houve falha na requisição ou **não há dados de retorno**.
+A propriedade `result` pode receber um de dois valores: `success` ou `error`. O retorno `success` acontece quando a requisição foi atendida **e há dados de retorno**. A API retorna `error` quando houve falha na requisição ou **não há dados de retorno**.
 
 A propriedade `body` recebe um de três possíveis tipos de valores: `string`, `object` ou `array`. Quando `result` é `error`, `body` recebe um texto com o motivo do erro. Quando `result` é `success`, `body` recebe um objeto ou lista a depender da rota chamada. Algumas rotas retornam um objeto com apenas um resultado, enquanto outras retornam uma lista de objetos.
 
@@ -377,4 +375,1128 @@ Os retornos `msg` e `param` contém a mensagem de erro e qual o campo do *payloa
 
 ### Rotas
 
-Algo incrível será escrito aqui logo mais :)
+Todas as rotas possuem, após o domínio, a versão da api. A versão atual é a `v1`, então o endereço base da rota é `[host]:[port]/v1`, sendo host e port o domínio e a porta. Cada entidade do banco possui um endereço próprio, além de um endereço para o serviço S3. Por fim, dentro dos endereços de cada entidade, cada ação possível de ser realizada é mapeada a um dos controladores.
+
+As rotas das entidades são:
+- `/v1/account`
+- `/v1/api`
+- `/v1/book`
+- `/v1/community`
+- `/v1/event`
+- `/v1/member`
+- `/v1/s3`
+- `/v1/topic`
+- `/v1/user`
+
+#### Account
+
+##### Buscar conta pelo ID
+
+Rota: `/v1/account/:id`
+Método: `GET`
+Parâmetros:
+- `id`: O id da conta no banco de dados
+
+Cabeçalhos:
+- `Content-Type`: Com o valor `application/json`
+
+Corpo: Não tem
+
+Códigos de retorno:
+
+| Código | Retorno |
+| --- | --- |
+| 200 | Ok |
+| 400 | ID inválido |
+
+Exemplo de retorno:
+
+```
+{
+    "result": "success",
+    "body": {
+        "_id": "",
+        "schema_version": 1,
+        "email": "",
+        "password": "",
+        "verified": true,
+        "active": true,
+        "suspended": false,
+        "created_at": "",
+        "last_active_at": "",
+        "__v": 0
+    }
+}
+```
+
+##### Buscar conta pelo endereço de e-mail
+
+Rota:
+Método:
+Parâmetros:
+-
+
+Cabeçalhos:
+-
+
+Corpo:
+
+Códigos de retorno:
+
+Exemplo de retorno:
+
+##### Validar credenciais
+
+Rota:
+Método:
+Parâmetros:
+-
+
+Cabeçalhos:
+-
+
+Corpo:
+
+Códigos de retorno:
+
+Exemplo de retorno:
+
+##### Criar nova conta
+
+Rota:
+Método:
+Parâmetros:
+-
+
+Cabeçalhos:
+-
+
+Corpo:
+
+Códigos de retorno:
+
+Exemplo de retorno:
+
+##### Atualizar uma conta pelo ID
+
+Rota:
+Método:
+Parâmetros:
+-
+
+Cabeçalhos:
+-
+
+Corpo:
+
+Códigos de retorno:
+
+Exemplo de retorno:
+
+##### Excluir uma conta pelo ID
+
+Rota:
+Método:
+Parâmetros:
+-
+
+Cabeçalhos:
+-
+
+Corpo:
+
+Códigos de retorno:
+
+Exemplo de retorno:
+
+#### Api
+
+##### Validar as credenciais de uma conta de API
+
+Rota:
+Método:
+Parâmetros:
+-
+
+Cabeçalhos:
+-
+
+Corpo:
+
+Códigos de retorno:
+
+Exemplo de retorno:
+
+##### Criar uma nova conta de API
+
+Rota:
+Método:
+Parâmetros:
+-
+
+Cabeçalhos:
+-
+
+Corpo:
+
+Códigos de retorno:
+
+Exemplo de retorno:
+
+##### Atualizar uma conta de API
+
+Rota:
+Método:
+Parâmetros:
+-
+
+Cabeçalhos:
+-
+
+Corpo:
+
+Códigos de retorno:
+
+Exemplo de retorno:
+
+##### Excluir uma conta de API
+
+Rota:
+Método:
+Parâmetros:
+-
+
+Cabeçalhos:
+-
+
+Corpo:
+
+Códigos de retorno:
+
+Exemplo de retorno:
+
+#### Book
+
+##### Listar todas as resenhas
+
+Rota:
+Método:
+Parâmetros:
+-
+
+Cabeçalhos:
+-
+
+Corpo:
+
+Códigos de retorno:
+
+Exemplo de retorno:
+
+##### Listar resenhas por termo de busca
+
+Rota:
+Método:
+Parâmetros:
+-
+
+Cabeçalhos:
+-
+
+Corpo:
+
+Códigos de retorno:
+
+Exemplo de retorno:
+
+##### Listar resenhas por gênero literário
+
+Rota:
+Método:
+Parâmetros:
+-
+
+Cabeçalhos:
+-
+
+Corpo:
+
+Códigos de retorno:
+
+Exemplo de retorno:
+
+##### Listar gêneros literários
+
+Rota:
+Método:
+Parâmetros:
+-
+
+Cabeçalhos:
+-
+
+Corpo:
+
+Códigos de retorno:
+
+Exemplo de retorno:
+
+##### Buscar livro pelo namespace
+
+Rota:
+Método:
+Parâmetros:
+-
+
+Cabeçalhos:
+-
+
+Corpo:
+
+Códigos de retorno:
+
+Exemplo de retorno:
+
+##### Buscar livros cadastrados por um usuário
+
+Rota:
+Método:
+Parâmetros:
+-
+
+Cabeçalhos:
+-
+
+Corpo:
+
+Códigos de retorno:
+
+Exemplo de retorno:
+
+##### Buscar livro pelo ID
+
+Rota:
+Método:
+Parâmetros:
+-
+
+Cabeçalhos:
+-
+
+Corpo:
+
+Códigos de retorno:
+
+Exemplo de retorno:
+
+##### Validar existência de gênero literário no banco
+
+Rota:
+Método:
+Parâmetros:
+-
+
+Cabeçalhos:
+-
+
+Corpo:
+
+Códigos de retorno:
+
+Exemplo de retorno:
+
+##### Validar existência de namespace
+
+Rota:
+Método:
+Parâmetros:
+-
+
+Cabeçalhos:
+-
+
+Corpo:
+
+Códigos de retorno:
+
+Exemplo de retorno:
+
+##### Criar novo livro
+
+Rota:
+Método:
+Parâmetros:
+-
+
+Cabeçalhos:
+-
+
+Corpo:
+
+Códigos de retorno:
+
+Exemplo de retorno:
+
+##### Atualizar livro pelo ID
+
+Rota:
+Método:
+Parâmetros:
+-
+
+Cabeçalhos:
+-
+
+Corpo:
+
+Códigos de retorno:
+
+Exemplo de retorno:
+
+##### Excluir um livro
+
+Rota:
+Método:
+Parâmetros:
+-
+
+Cabeçalhos:
+-
+
+Corpo:
+
+Códigos de retorno:
+
+Exemplo de retorno:
+
+#### Community
+
+##### Listar todas as comunidades
+
+Rota:
+Método:
+Parâmetros:
+-
+
+Cabeçalhos:
+-
+
+Corpo:
+
+Códigos de retorno:
+
+Exemplo de retorno:
+
+##### Buscar comunidade pelo namespace
+
+Rota:
+Método:
+Parâmetros:
+-
+
+Cabeçalhos:
+-
+
+Corpo:
+
+Códigos de retorno:
+
+Exemplo de retorno:
+
+##### Listar comunidades criadas por um usuário
+
+Rota:
+Método:
+Parâmetros:
+-
+
+Cabeçalhos:
+-
+
+Corpo:
+
+Códigos de retorno:
+
+Exemplo de retorno:
+
+##### Buscar comunidade por ID
+
+Rota:
+Método:
+Parâmetros:
+-
+
+Cabeçalhos:
+-
+
+Corpo:
+
+Códigos de retorno:
+
+Exemplo de retorno:
+
+##### Validar existência de namespace no banco
+
+Rota:
+Método:
+Parâmetros:
+-
+
+Cabeçalhos:
+-
+
+Corpo:
+
+Códigos de retorno:
+
+Exemplo de retorno:
+
+##### Validar existência de membro na comunidade
+
+Rota:
+Método:
+Parâmetros:
+-
+
+Cabeçalhos:
+-
+
+Corpo:
+
+Códigos de retorno:
+
+Exemplo de retorno:
+
+##### Criar nova comunidade
+
+Rota:
+Método:
+Parâmetros:
+-
+
+Cabeçalhos:
+-
+
+Corpo:
+
+Códigos de retorno:
+
+Exemplo de retorno:
+
+##### Adicionar membro a uma comunidade
+
+Rota:
+Método:
+Parâmetros:
+-
+
+Cabeçalhos:
+-
+
+Corpo:
+
+Códigos de retorno:
+
+Exemplo de retorno:
+
+##### Excluir membro de uma comunidade
+
+Rota:
+Método:
+Parâmetros:
+-
+
+Cabeçalhos:
+-
+
+Corpo:
+
+Códigos de retorno:
+
+Exemplo de retorno:
+
+##### Atualizar comunidade pelo ID
+
+Rota:
+Método:
+Parâmetros:
+-
+
+Cabeçalhos:
+-
+
+Corpo:
+
+Códigos de retorno:
+
+Exemplo de retorno:
+
+##### Excluir uma comunidade
+
+Rota:
+Método:
+Parâmetros:
+-
+
+Cabeçalhos:
+-
+
+Corpo:
+
+Códigos de retorno:
+
+Exemplo de retorno:
+
+#### Event
+
+##### Listar todos os eventos
+
+Rota:
+Método:
+Parâmetros:
+-
+
+Cabeçalhos:
+-
+
+Corpo:
+
+Códigos de retorno:
+
+Exemplo de retorno:
+
+##### Listar o próximo evento de uma comunidade
+
+Rota:
+Método:
+Parâmetros:
+-
+
+Cabeçalhos:
+-
+
+Corpo:
+
+Códigos de retorno:
+
+Exemplo de retorno:
+
+##### Listar eventos passados de uma comunidade
+
+Rota:
+Método:
+Parâmetros:
+-
+
+Cabeçalhos:
+-
+
+Corpo:
+
+Códigos de retorno:
+
+Exemplo de retorno:
+
+##### Listar eventos de uma comunidade
+
+Rota:
+Método:
+Parâmetros:
+-
+
+Cabeçalhos:
+-
+
+Corpo:
+
+Códigos de retorno:
+
+Exemplo de retorno:
+
+##### Buscar evento pelo namespace
+
+Rota:
+Método:
+Parâmetros:
+-
+
+Cabeçalhos:
+-
+
+Corpo:
+
+Códigos de retorno:
+
+Exemplo de retorno:
+
+##### Listar eventos criados por um usuário
+
+Rota:
+Método:
+Parâmetros:
+-
+
+Cabeçalhos:
+-
+
+Corpo:
+
+Códigos de retorno:
+
+Exemplo de retorno:
+
+##### Buscar evento por ID
+
+Rota:
+Método:
+Parâmetros:
+-
+
+Cabeçalhos:
+-
+
+Corpo:
+
+Códigos de retorno:
+
+Exemplo de retorno:
+
+##### Listar participantes de um evento
+
+Rota:
+Método:
+Parâmetros:
+-
+
+Cabeçalhos:
+-
+
+Corpo:
+
+Códigos de retorno:
+
+Exemplo de retorno:
+
+##### Validar existência de namespace do evento no banco
+
+Rota:
+Método:
+Parâmetros:
+-
+
+Cabeçalhos:
+-
+
+Corpo:
+
+Códigos de retorno:
+
+Exemplo de retorno:
+
+##### Cadastrar participante em evento
+
+Rota:
+Método:
+Parâmetros:
+-
+
+Cabeçalhos:
+-
+
+Corpo:
+
+Códigos de retorno:
+
+Exemplo de retorno:
+
+##### Criar novo evento
+
+Rota:
+Método:
+Parâmetros:
+-
+
+Cabeçalhos:
+-
+
+Corpo:
+
+Códigos de retorno:
+
+Exemplo de retorno:
+
+##### Atualizar evento pelo ID
+
+Rota:
+Método:
+Parâmetros:
+-
+
+Cabeçalhos:
+-
+
+Corpo:
+
+Códigos de retorno:
+
+Exemplo de retorno:
+
+##### Excluir evento pelo ID
+
+Rota:
+Método:
+Parâmetros:
+-
+
+Cabeçalhos:
+-
+
+Corpo:
+
+Códigos de retorno:
+
+Exemplo de retorno:
+
+##### Excluir participante de evento
+
+Rota:
+Método:
+Parâmetros:
+-
+
+Cabeçalhos:
+-
+
+Corpo:
+
+Códigos de retorno:
+
+Exemplo de retorno:
+
+#### Member
+
+##### Listar membros de uma comunidade
+
+Rota:
+Método:
+Parâmetros:
+-
+
+Cabeçalhos:
+-
+
+Corpo:
+
+Códigos de retorno:
+
+Exemplo de retorno:
+
+##### Buscar membro pelo ID
+
+Rota:
+Método:
+Parâmetros:
+-
+
+Cabeçalhos:
+-
+
+Corpo:
+
+Códigos de retorno:
+
+Exemplo de retorno:
+
+##### Buscar membro pelo ID de usuário
+
+Rota:
+Método:
+Parâmetros:
+-
+
+Cabeçalhos:
+-
+
+Corpo:
+
+Códigos de retorno:
+
+Exemplo de retorno:
+
+##### Cadastrar novo membro
+
+Rota:
+Método:
+Parâmetros:
+-
+
+Cabeçalhos:
+-
+
+Corpo:
+
+Códigos de retorno:
+
+Exemplo de retorno:
+
+##### Atualizar membro pelo ID
+
+Rota:
+Método:
+Parâmetros:
+-
+
+Cabeçalhos:
+-
+
+Corpo:
+
+Códigos de retorno:
+
+Exemplo de retorno:
+
+##### Excluir membro pelo ID
+
+Rota:
+Método:
+Parâmetros:
+-
+
+Cabeçalhos:
+-
+
+Corpo:
+
+Códigos de retorno:
+
+Exemplo de retorno:
+
+#### s3
+
+##### Listar URL temporária para manipulação de bucket no S3
+
+Rota:
+Método:
+Parâmetros:
+-
+
+Cabeçalhos:
+-
+
+Corpo:
+
+Códigos de retorno:
+
+Exemplo de retorno:
+
+#### Topic
+
+##### Listar todos os tópicos
+
+Rota:
+Método:
+Parâmetros:
+-
+
+Cabeçalhos:
+-
+
+Corpo:
+
+Códigos de retorno:
+
+Exemplo de retorno:
+
+##### Listar tópicos por comunidade
+
+Rota:
+Método:
+Parâmetros:
+-
+
+Cabeçalhos:
+-
+
+Corpo:
+
+Códigos de retorno:
+
+Exemplo de retorno:
+
+##### Buscar tópicos por palavra chave
+
+Rota:
+Método:
+Parâmetros:
+-
+
+Cabeçalhos:
+-
+
+Corpo:
+
+Códigos de retorno:
+
+Exemplo de retorno:
+
+##### Buscar tópico por ID
+
+Rota:
+Método:
+Parâmetros:
+-
+
+Cabeçalhos:
+-
+
+Corpo:
+
+Códigos de retorno:
+
+Exemplo de retorno:
+
+##### Criar novo tópico
+
+Rota:
+Método:
+Parâmetros:
+-
+
+Cabeçalhos:
+-
+
+Corpo:
+
+Códigos de retorno:
+
+Exemplo de retorno:
+
+##### Atualizar tópico pelo ID
+
+Rota:
+Método:
+Parâmetros:
+-
+
+Cabeçalhos:
+-
+
+Corpo:
+
+Códigos de retorno:
+
+Exemplo de retorno:
+
+##### Excluir tópico pelo ID
+
+Rota:
+Método:
+Parâmetros:
+-
+
+Cabeçalhos:
+-
+
+Corpo:
+
+Códigos de retorno:
+
+Exemplo de retorno:
+
+#### User
+
+##### Buscar usuário pelo ID
+
+Rota:
+Método:
+Parâmetros:
+-
+
+Cabeçalhos:
+-
+
+Corpo:
+
+Códigos de retorno:
+
+Exemplo de retorno:
+
+##### Buscar usuário pelo ID da conta
+
+Rota:
+Método:
+Parâmetros:
+-
+
+Cabeçalhos:
+-
+
+Corpo:
+
+Códigos de retorno:
+
+Exemplo de retorno:
+
+##### Criar novo usuário
+
+Rota:
+Método:
+Parâmetros:
+-
+
+Cabeçalhos:
+-
+
+Corpo:
+
+Códigos de retorno:
+
+Exemplo de retorno:
+
+##### Atualizar usuário pelo ID
+
+Rota:
+Método:
+Parâmetros:
+-
+
+Cabeçalhos:
+-
+
+Corpo:
+
+Códigos de retorno:
+
+Exemplo de retorno:
+
+##### Atualizar usuário pelo ID da conta
+
+Rota:
+Método:
+Parâmetros:
+-
+
+Cabeçalhos:
+-
+
+Corpo:
+
+Códigos de retorno:
+
+Exemplo de retorno:
+
+##### Excluir usuário pelo ID
+
+Rota:
+Método:
+Parâmetros:
+-
+
+Cabeçalhos:
+-
+
+Corpo:
+
+Códigos de retorno:
+
+Exemplo de retorno:
