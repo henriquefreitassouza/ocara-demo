@@ -393,7 +393,9 @@ As rotas das entidades são:
 ##### Buscar conta pelo ID
 
 Rota: `/v1/account/:id`
+
 Método: `GET`
+
 Parâmetros:
 - `id`: O id da conta no banco de dados
 
@@ -432,7 +434,9 @@ Exemplo de retorno:
 ##### Buscar conta pelo endereço de e-mail
 
 Rota:
+
 Método:
+
 Parâmetros:
 -
 
@@ -448,7 +452,9 @@ Exemplo de retorno:
 ##### Validar credenciais
 
 Rota:
+
 Método:
+
 Parâmetros:
 -
 
@@ -464,7 +470,9 @@ Exemplo de retorno:
 ##### Criar nova conta
 
 Rota:
+
 Método:
+
 Parâmetros:
 -
 
@@ -480,7 +488,9 @@ Exemplo de retorno:
 ##### Atualizar uma conta pelo ID
 
 Rota:
+
 Método:
+
 Parâmetros:
 -
 
@@ -496,7 +506,9 @@ Exemplo de retorno:
 ##### Excluir uma conta pelo ID
 
 Rota:
+
 Método:
+
 Parâmetros:
 -
 
@@ -514,7 +526,9 @@ Exemplo de retorno:
 ##### Validar as credenciais de uma conta de API
 
 Rota:
+
 Método:
+
 Parâmetros:
 -
 
@@ -530,7 +544,9 @@ Exemplo de retorno:
 ##### Criar uma nova conta de API
 
 Rota:
+
 Método:
+
 Parâmetros:
 -
 
@@ -546,7 +562,9 @@ Exemplo de retorno:
 ##### Atualizar uma conta de API
 
 Rota:
+
 Método:
+
 Parâmetros:
 -
 
@@ -562,7 +580,9 @@ Exemplo de retorno:
 ##### Excluir uma conta de API
 
 Rota:
+
 Método:
+
 Parâmetros:
 -
 
@@ -580,7 +600,9 @@ Exemplo de retorno:
 ##### Listar todas as resenhas
 
 Rota:
+
 Método:
+
 Parâmetros:
 -
 
@@ -596,7 +618,9 @@ Exemplo de retorno:
 ##### Listar resenhas por termo de busca
 
 Rota:
+
 Método:
+
 Parâmetros:
 -
 
@@ -612,7 +636,9 @@ Exemplo de retorno:
 ##### Listar resenhas por gênero literário
 
 Rota:
+
 Método:
+
 Parâmetros:
 -
 
@@ -628,7 +654,9 @@ Exemplo de retorno:
 ##### Listar gêneros literários
 
 Rota:
+
 Método:
+
 Parâmetros:
 -
 
@@ -644,7 +672,9 @@ Exemplo de retorno:
 ##### Buscar livro pelo namespace
 
 Rota:
+
 Método:
+
 Parâmetros:
 -
 
@@ -660,7 +690,9 @@ Exemplo de retorno:
 ##### Buscar livros cadastrados por um usuário
 
 Rota:
+
 Método:
+
 Parâmetros:
 -
 
@@ -676,7 +708,9 @@ Exemplo de retorno:
 ##### Buscar livro pelo ID
 
 Rota:
+
 Método:
+
 Parâmetros:
 -
 
@@ -692,7 +726,9 @@ Exemplo de retorno:
 ##### Validar existência de gênero literário no banco
 
 Rota:
+
 Método:
+
 Parâmetros:
 -
 
@@ -708,7 +744,9 @@ Exemplo de retorno:
 ##### Validar existência de namespace
 
 Rota:
+
 Método:
+
 Parâmetros:
 -
 
@@ -724,7 +762,9 @@ Exemplo de retorno:
 ##### Criar novo livro
 
 Rota:
+
 Método:
+
 Parâmetros:
 -
 
@@ -740,7 +780,9 @@ Exemplo de retorno:
 ##### Atualizar livro pelo ID
 
 Rota:
+
 Método:
+
 Parâmetros:
 -
 
@@ -756,7 +798,9 @@ Exemplo de retorno:
 ##### Excluir um livro
 
 Rota:
+
 Método:
+
 Parâmetros:
 -
 
@@ -774,7 +818,9 @@ Exemplo de retorno:
 ##### Listar todas as comunidades
 
 Rota:
+
 Método:
+
 Parâmetros:
 -
 
@@ -790,7 +836,9 @@ Exemplo de retorno:
 ##### Buscar comunidade pelo namespace
 
 Rota:
+
 Método:
+
 Parâmetros:
 -
 
@@ -806,7 +854,9 @@ Exemplo de retorno:
 ##### Listar comunidades criadas por um usuário
 
 Rota:
+
 Método:
+
 Parâmetros:
 -
 
@@ -822,7 +872,9 @@ Exemplo de retorno:
 ##### Buscar comunidade por ID
 
 Rota:
+
 Método:
+
 Parâmetros:
 -
 
@@ -838,7 +890,9 @@ Exemplo de retorno:
 ##### Validar existência de namespace no banco
 
 Rota:
+
 Método:
+
 Parâmetros:
 -
 
@@ -854,7 +908,9 @@ Exemplo de retorno:
 ##### Validar existência de membro na comunidade
 
 Rota:
+
 Método:
+
 Parâmetros:
 -
 
@@ -870,7 +926,9 @@ Exemplo de retorno:
 ##### Criar nova comunidade
 
 Rota:
+
 Método:
+
 Parâmetros:
 -
 
@@ -886,7 +944,9 @@ Exemplo de retorno:
 ##### Adicionar membro a uma comunidade
 
 Rota:
+
 Método:
+
 Parâmetros:
 -
 
@@ -902,7 +962,9 @@ Exemplo de retorno:
 ##### Excluir membro de uma comunidade
 
 Rota:
+
 Método:
+
 Parâmetros:
 -
 
@@ -918,7 +980,9 @@ Exemplo de retorno:
 ##### Atualizar comunidade pelo ID
 
 Rota:
+
 Método:
+
 Parâmetros:
 -
 
@@ -934,7 +998,9 @@ Exemplo de retorno:
 ##### Excluir uma comunidade
 
 Rota:
+
 Método:
+
 Parâmetros:
 -
 
@@ -952,7 +1018,9 @@ Exemplo de retorno:
 ##### Listar todos os eventos
 
 Rota:
+
 Método:
+
 Parâmetros:
 -
 
@@ -968,7 +1036,9 @@ Exemplo de retorno:
 ##### Listar o próximo evento de uma comunidade
 
 Rota:
+
 Método:
+
 Parâmetros:
 -
 
@@ -984,7 +1054,9 @@ Exemplo de retorno:
 ##### Listar eventos passados de uma comunidade
 
 Rota:
+
 Método:
+
 Parâmetros:
 -
 
@@ -1000,7 +1072,9 @@ Exemplo de retorno:
 ##### Listar eventos de uma comunidade
 
 Rota:
+
 Método:
+
 Parâmetros:
 -
 
@@ -1016,7 +1090,9 @@ Exemplo de retorno:
 ##### Buscar evento pelo namespace
 
 Rota:
+
 Método:
+
 Parâmetros:
 -
 
@@ -1032,7 +1108,9 @@ Exemplo de retorno:
 ##### Listar eventos criados por um usuário
 
 Rota:
+
 Método:
+
 Parâmetros:
 -
 
@@ -1048,7 +1126,9 @@ Exemplo de retorno:
 ##### Buscar evento por ID
 
 Rota:
+
 Método:
+
 Parâmetros:
 -
 
@@ -1064,7 +1144,9 @@ Exemplo de retorno:
 ##### Listar participantes de um evento
 
 Rota:
+
 Método:
+
 Parâmetros:
 -
 
@@ -1080,7 +1162,9 @@ Exemplo de retorno:
 ##### Validar existência de namespace do evento no banco
 
 Rota:
+
 Método:
+
 Parâmetros:
 -
 
@@ -1096,7 +1180,9 @@ Exemplo de retorno:
 ##### Cadastrar participante em evento
 
 Rota:
+
 Método:
+
 Parâmetros:
 -
 
@@ -1112,7 +1198,9 @@ Exemplo de retorno:
 ##### Criar novo evento
 
 Rota:
+
 Método:
+
 Parâmetros:
 -
 
@@ -1128,7 +1216,9 @@ Exemplo de retorno:
 ##### Atualizar evento pelo ID
 
 Rota:
+
 Método:
+
 Parâmetros:
 -
 
@@ -1144,7 +1234,9 @@ Exemplo de retorno:
 ##### Excluir evento pelo ID
 
 Rota:
+
 Método:
+
 Parâmetros:
 -
 
@@ -1160,7 +1252,9 @@ Exemplo de retorno:
 ##### Excluir participante de evento
 
 Rota:
+
 Método:
+
 Parâmetros:
 -
 
@@ -1178,7 +1272,9 @@ Exemplo de retorno:
 ##### Listar membros de uma comunidade
 
 Rota:
+
 Método:
+
 Parâmetros:
 -
 
@@ -1194,7 +1290,9 @@ Exemplo de retorno:
 ##### Buscar membro pelo ID
 
 Rota:
+
 Método:
+
 Parâmetros:
 -
 
@@ -1210,7 +1308,9 @@ Exemplo de retorno:
 ##### Buscar membro pelo ID de usuário
 
 Rota:
+
 Método:
+
 Parâmetros:
 -
 
@@ -1226,7 +1326,9 @@ Exemplo de retorno:
 ##### Cadastrar novo membro
 
 Rota:
+
 Método:
+
 Parâmetros:
 -
 
@@ -1242,7 +1344,9 @@ Exemplo de retorno:
 ##### Atualizar membro pelo ID
 
 Rota:
+
 Método:
+
 Parâmetros:
 -
 
@@ -1258,7 +1362,9 @@ Exemplo de retorno:
 ##### Excluir membro pelo ID
 
 Rota:
+
 Método:
+
 Parâmetros:
 -
 
@@ -1276,7 +1382,9 @@ Exemplo de retorno:
 ##### Listar URL temporária para manipulação de bucket no S3
 
 Rota:
+
 Método:
+
 Parâmetros:
 -
 
@@ -1294,7 +1402,9 @@ Exemplo de retorno:
 ##### Listar todos os tópicos
 
 Rota:
+
 Método:
+
 Parâmetros:
 -
 
@@ -1310,7 +1420,9 @@ Exemplo de retorno:
 ##### Listar tópicos por comunidade
 
 Rota:
+
 Método:
+
 Parâmetros:
 -
 
@@ -1326,7 +1438,9 @@ Exemplo de retorno:
 ##### Buscar tópicos por palavra chave
 
 Rota:
+
 Método:
+
 Parâmetros:
 -
 
@@ -1342,7 +1456,9 @@ Exemplo de retorno:
 ##### Buscar tópico por ID
 
 Rota:
+
 Método:
+
 Parâmetros:
 -
 
@@ -1358,7 +1474,9 @@ Exemplo de retorno:
 ##### Criar novo tópico
 
 Rota:
+
 Método:
+
 Parâmetros:
 -
 
@@ -1374,7 +1492,9 @@ Exemplo de retorno:
 ##### Atualizar tópico pelo ID
 
 Rota:
+
 Método:
+
 Parâmetros:
 -
 
@@ -1390,7 +1510,9 @@ Exemplo de retorno:
 ##### Excluir tópico pelo ID
 
 Rota:
+
 Método:
+
 Parâmetros:
 -
 
@@ -1408,7 +1530,9 @@ Exemplo de retorno:
 ##### Buscar usuário pelo ID
 
 Rota:
+
 Método:
+
 Parâmetros:
 -
 
@@ -1424,7 +1548,9 @@ Exemplo de retorno:
 ##### Buscar usuário pelo ID da conta
 
 Rota:
+
 Método:
+
 Parâmetros:
 -
 
@@ -1440,7 +1566,9 @@ Exemplo de retorno:
 ##### Criar novo usuário
 
 Rota:
+
 Método:
+
 Parâmetros:
 -
 
@@ -1456,7 +1584,9 @@ Exemplo de retorno:
 ##### Atualizar usuário pelo ID
 
 Rota:
+
 Método:
+
 Parâmetros:
 -
 
@@ -1472,7 +1602,9 @@ Exemplo de retorno:
 ##### Atualizar usuário pelo ID da conta
 
 Rota:
+
 Método:
+
 Parâmetros:
 -
 
@@ -1488,7 +1620,9 @@ Exemplo de retorno:
 ##### Excluir usuário pelo ID
 
 Rota:
+
 Método:
+
 Parâmetros:
 -
 
