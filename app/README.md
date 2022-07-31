@@ -415,19 +415,10 @@ Exemplo de retorno:
 
 ```
 {
-    "result": "success",
-    "body": {
-        "_id": "",
-        "schema_version": 1,
-        "email": "",
-        "password": "",
-        "verified": true,
-        "active": true,
-        "suspended": false,
-        "created_at": "",
-        "last_active_at": "",
-        "__v": 0
-    }
+  "result": "success",
+  "body": {
+    ...
+  }
 }
 ```
 
@@ -457,9 +448,9 @@ Exemplo de retorno:
 
 ```
 {
-  result: success,
-  body: {
-
+  "result": "success",
+  "body": {
+    ...
   }
 }
 ```
@@ -491,13 +482,9 @@ Exemplo de retorno:
 
 ```
 {
-  result: success,
-  body: {
-    account: "",
-    user: "",
-    email: "",
-    name: "",
-    accessToken: ""
+  "result": "success",
+  "body": {
+    ...
   }
 }
 ```
@@ -529,9 +516,9 @@ Exemplo de retorno:
 
 ```
 {
-  result: success,
-  body: {
-
+  "result": "success",
+  "body": {
+    ...
   }
 }
 ```
@@ -565,9 +552,9 @@ Exemplo de retorno:
 
 ```
 {
-  result: success,
-  body: {
-
+  "result": "success",
+  "body": {
+    ...
   }
 }
 ```
@@ -598,9 +585,9 @@ Exemplo de retorno:
 
 ```
 {
-  result: success,
-  body: {
-
+  "result": "success",
+  "body": {
+    ...
   }
 }
 ```
@@ -634,9 +621,9 @@ Exemplo de retorno:
 
 ```
 {
-  result: success,
-  body: {
-
+  "result": "success",
+  "body": {
+    ...
   }
 }
 ```
@@ -668,9 +655,9 @@ Exemplo de retorno:
 
 ```
 {
-  result: success,
-  body: {
-
+  "result": "success",
+  "body": {
+    ...
   }
 }
 ```
@@ -704,9 +691,9 @@ Exemplo de retorno:
 
 ```
 {
-  result: success,
-  body: {
-
+  "result": "success",
+  "body": {
+    ...
   }
 }
 ```
@@ -737,9 +724,9 @@ Exemplo de retorno:
 
 ```
 {
-  result: success,
-  body: {
-
+  "result": "success",
+  "body": {
+    ...
   }
 }
 ```
@@ -770,10 +757,10 @@ Exemplo de retorno:
 
 ```
 {
-  result: success,
-  body: {
-
-  }
+  "result": "success",
+  "body": [{
+    ...
+  }]
 }
 ```
 
@@ -803,10 +790,10 @@ Exemplo de retorno:
 
 ```
 {
-  result: success,
-  body: {
-
-  }
+  "result": "success",
+  "body": [{
+    ...
+  }]
 }
 ```
 
@@ -836,10 +823,10 @@ Exemplo de retorno:
 
 ```
 {
-  result: success,
-  body: {
-
-  }
+  "result": "success",
+  "body": [{
+    ...
+  }]
 }
 ```
 
@@ -867,10 +854,10 @@ Exemplo de retorno:
 
 ```
 {
-  result: success,
-  body: {
-
-  }
+  "result": "success",
+  "body": [{
+    ...
+  }]
 }
 ```
 
@@ -900,9 +887,9 @@ Exemplo de retorno:
 
 ```
 {
-  result: success,
-  body: {
-
+  "result": "success",
+  "body": {
+    ...
   }
 }
 ```
@@ -933,10 +920,10 @@ Exemplo de retorno:
 
 ```
 {
-  result: success,
-  body: {
-
-  }
+  "result": "success",
+  "body": [{
+    ...
+  }]
 }
 ```
 
@@ -966,9 +953,9 @@ Exemplo de retorno:
 
 ```
 {
-  result: success,
-  body: {
-
+  "result": "success",
+  "body": {
+    ...
   }
 }
 ```
@@ -999,8 +986,8 @@ Exemplo de retorno:
 
 ```
 {
-  result: success,
-  body: ""
+  "result": "success",
+  "body": ""
 }
 ```
 
@@ -1030,8 +1017,8 @@ Exemplo de retorno:
 
 ```
 {
-  result: success,
-  body: ""
+  "result": "success",
+  "body": ""
 }
 ```
 
@@ -1073,9 +1060,9 @@ Exemplo de retorno:
 
 ```
 {
-  result: success,
-  body: {
-
+  "result": "success",
+  "body": {
+    ...
   }
 }
 ```
@@ -1118,9 +1105,9 @@ Exemplo de retorno:
 
 ```
 {
-  result: success,
-  body: {
-
+  "result": "success",
+  "body": {
+    ...
   }
 }
 ```
@@ -1151,9 +1138,9 @@ Exemplo de retorno:
 
 ```
 {
-  result: success,
-  body: {
-
+  "result": "success",
+  "body": {
+    ...
   }
 }
 ```
@@ -1162,820 +1149,1620 @@ Exemplo de retorno:
 
 ##### Listar todas as comunidades
 
-Rota:
+Rota: `/v1/community/list`
 
-Método:
+Método: `GET`
 
-Parâmetros:
--
+Parâmetros: Não tem
 
 Cabeçalhos:
--
+- `Content-Type: application/json`
 
-Corpo:
+Corpo: Não tem
 
 Códigos de retorno:
 
+| Código | Status | Retorno |
+| --- | --- | --- |
+| 200 | `success` | Ok |
+| 200 | `error` | Não há comunidades cadastradas |
+
 Exemplo de retorno:
+
+```
+{
+  "result": "success",
+  "body": [{
+    ...
+  }]
+}
+```
 
 ##### Buscar comunidade pelo namespace
 
-Rota:
+Rota: `/v1/community/list/namespace/:namespace`
 
-Método:
+Método: `GET`
 
 Parâmetros:
--
+- `namespace`: identificador do tipo namespace da comunidade
 
 Cabeçalhos:
--
+- `Content-Type: application/json`
 
-Corpo:
+Corpo: Não tem
 
 Códigos de retorno:
 
+| Código | Status | Retorno |
+| --- | --- | --- |
+| 200 | `success` | Ok |
+| 200 | `error` | Não há comunidades com o identificador informado |
+| 400 | `error` | Informe o identificador para busca de comunidades |
+
 Exemplo de retorno:
+
+```
+{
+  "result": "success",
+  "body": {
+    ...
+  }
+}
+```
 
 ##### Listar comunidades criadas por um usuário
 
-Rota:
+Rota: `/v1/community/list/user/:user`
 
-Método:
+Método: `GET`
 
 Parâmetros:
--
+- `user`: ID do usuário
 
 Cabeçalhos:
--
+- `Content-Type: application/json`
 
-Corpo:
+Corpo: Não tem
 
 Códigos de retorno:
 
+| Código | Status | Retorno |
+| --- | --- | --- |
+| 200 | `success` | Ok |
+| 200 | `error` | Não há comunidades gerenciadas pelo usuário |
+| 400 | `error` | Informe o identificador para busca de comunidades |
+
 Exemplo de retorno:
+
+```
+{
+  "result": "success",
+  "body": [{
+    ...
+  }]
+}
+```
 
 ##### Buscar comunidade por ID
 
-Rota:
+Rota: `/v1/community/:id`
 
-Método:
+Método: `GET`
 
 Parâmetros:
--
+- `id`: ID da comunidade
 
 Cabeçalhos:
--
+- `Content-Type: application/json`
 
-Corpo:
+Corpo: Não tem
 
 Códigos de retorno:
 
+| Código | Status | Retorno |
+| --- | --- | --- |
+| 200 | `success` | Ok |
+| 200 | `error` | Não há comunidades com o ID informado |
+| 400 | `error` | ID inválido |
+
 Exemplo de retorno:
+
+```
+{
+  "result": "success",
+  "body": {
+    ...
+  }
+}
+```
 
 ##### Validar existência de namespace no banco
 
-Rota:
+Rota: `/v1/community/validate`
 
-Método:
+Método: `POST`
 
-Parâmetros:
--
+Parâmetros: Não tem
 
 Cabeçalhos:
--
+- `Content-Type: application/json`
 
 Corpo:
+- `namespace`: Identificador do tipo namespace da comunidade
 
 Códigos de retorno:
 
+| Código | Status | Retorno |
+| --- | --- | --- |
+| 200 | `success` | Ok |
+| 200 | `error` | Não há comunidades com o identificador informado |
+| 400 | `error` | Informe o identificador da comunidade |
+
 Exemplo de retorno:
+
+```
+{
+  "result": "success",
+  "body": {
+    ...
+  }
+}
+```
 
 ##### Validar existência de membro na comunidade
 
-Rota:
+Rota: `/v1/community/validate/member`
 
-Método:
+Método: `POST`
 
-Parâmetros:
--
+Parâmetros: Não tem
 
 Cabeçalhos:
--
+- `Content-Type: application/json`
 
 Corpo:
+- `member`: ID do membro
+- `community` Identificador do tipo namespace da comunidade
 
 Códigos de retorno:
 
+| Código | Status | Retorno |
+| --- | --- | --- |
+| 200 | `success` | Ok |
+| 200 | `error` | Não há membros com o identificador informado nesta comunidade |
+| 400 | `error` | Informe os IDs do membro e da comunidade |
+
 Exemplo de retorno:
+
+```
+{
+  "result": "success",
+  "body": {
+    ...
+  }
+}
+```
 
 ##### Criar nova comunidade
 
-Rota:
+Rota: `/v1/community`
 
-Método:
+Método: `POST`
 
-Parâmetros:
--
+Parâmetros: Não tem
 
 Cabeçalhos:
--
+- `Content-Type: application/json`
 
 Corpo:
+- `name`: Nome da comunidade
+- `excerpt`: Descrição curta da comunidade
+- `description`: Descrição longa da comunidade
+- `picture`: Endereço da imagem de perfil da comunidade
+- `cover`: Endereço da imagem de capa da comunidade
+- `user`: ID do usuário que criou a comunidade
+
+Não é necessário passar o parâmetro `namespace`, ele é gerado automaticamente com base no nome da comunidade e em uma sequência aleatória de caracteres alfanuméricos.
 
 Códigos de retorno:
 
+| Código | Status | Retorno |
+| --- | --- | --- |
+| 200 | `success` | Ok |
+| 400 | `error` | Lista de erros |
+| 400 | `error` | ID de usuário inválido |
+| 500 | `error` | Falha ao cadastrar nova comunidade |
+
 Exemplo de retorno:
+
+```
+{
+  "result": "success",
+  "body": {
+    ...
+  }
+}
+```
 
 ##### Adicionar membro a uma comunidade
 
-Rota:
+Rota: `/v1/community/member`
 
-Método:
+Método: `POST`
 
-Parâmetros:
--
+Parâmetros: Não tem
 
 Cabeçalhos:
--
+- `Content-Type: application/json`
 
 Corpo:
+- `member`: ID do membro
+- `community` Identificador do tipo namespace da comunidade
 
 Códigos de retorno:
 
+| Código | Status | Retorno |
+| --- | --- | --- |
+| 200 | `success` | Ok |
+| 200 | `error` | Não há comunidades com o ID informado |
+| 400 | `error` | Informe os IDs do membro e da comunidade |
+| 500 | `error` | Falha ao adicionar novo membro na comunidade |
+
 Exemplo de retorno:
+
+```
+{
+  "result": "success",
+  "body": {
+    ...
+  }
+}
+```
 
 ##### Excluir membro de uma comunidade
 
-Rota:
+Rota: `/v1/community/member/delete`
 
-Método:
+Método: `POST`
 
-Parâmetros:
--
+Parâmetros: Não tem
 
 Cabeçalhos:
--
+- `Content-Type: application/json`
 
 Corpo:
+- `member`: ID do membro
+- `community` Identificador do tipo namespace da comunidade
 
 Códigos de retorno:
 
+| Código | Status | Retorno |
+| --- | --- | --- |
+| 200 | `success` | Ok |
+| 200 | `error` | Membro informado não encontrado |
+| 200 | `error` | Não há membros na comunidade |
+| 200 | `error` | Não há comunidades com o ID informado |
+| 400 | `error` | Informe os IDs do membro e da comunidade |
+| 500 | `error` | Falha ao remover membro da comunidade |
+
 Exemplo de retorno:
+
+```
+{
+  "result": "success",
+  "body": {
+    ...
+  }
+}
+```
 
 ##### Atualizar comunidade pelo ID
 
-Rota:
+Rota: `/v1/community/:id`
 
-Método:
+Método: `PATCH`
 
 Parâmetros:
--
+- `id`: ID da comunidade
 
 Cabeçalhos:
--
+- `Content-Type: application/json`
 
 Corpo:
+- `name`: Nome da comunidade
+- `excerpt`: Descrição curta da comunidade
+- `description`: Descrição longa da comunidade
+- `picture`: Endereço da imagem de perfil da comunidade
+- `cover`: Endereço da imagem de capa da comunidade
 
 Códigos de retorno:
 
+| Código | Status | Retorno |
+| --- | --- | --- |
+| 200 | `success` | Ok |
+| 400 | `error` | Lista de erros |
+| 400 | `error` | ID inválido |
+| 500 | `error` | Falha ao atualizar a comunidade |
+
 Exemplo de retorno:
+
+```
+{
+  "result": "success",
+  "body": {
+    ...
+  }
+}
+```
 
 ##### Excluir uma comunidade
 
-Rota:
+Rota: `/v1/community/:id`
 
-Método:
+Método: `DELETE`
 
 Parâmetros:
--
+- `id`: ID da comunidade
 
 Cabeçalhos:
--
+- `Content-Type: application/json`
 
-Corpo:
+Corpo: Não tem
 
 Códigos de retorno:
 
+| Código | Status | Retorno |
+| --- | --- | --- |
+| 200 | `success` | Ok |
+| 400 | `error` | ID inválido |
+| 500 | `error` | Falha ao deletar a comunidade |
+
 Exemplo de retorno:
+
+```
+{
+  "result": "success",
+  "body": {
+    ...
+  }
+}
+```
 
 #### Event
 
 ##### Listar todos os eventos
 
-Rota:
+Rota: `/v1/event/list`
 
-Método:
+Método: `GET`
 
-Parâmetros:
--
+Parâmetros: Não tem
 
 Cabeçalhos:
--
+- `Content-Type: application/json`
 
-Corpo:
+Corpo: Não tem
 
 Códigos de retorno:
 
+| Código | Status | Retorno |
+| --- | --- | --- |
+| 200 | `success` | Ok |
+| 200 | `error` | Não há eventos cadastrados |
+
 Exemplo de retorno:
+
+```
+{
+  "result": "success",
+  "body": [{
+    ...
+  }]
+}
+```
 
 ##### Listar o próximo evento de uma comunidade
 
-Rota:
+Rota: `/v1/event/list/next/:community`
 
-Método:
+Método: `GET`
 
 Parâmetros:
--
+- `community`: Identificador do tipo namespace da comunidade
 
 Cabeçalhos:
--
+- `Content-Type: application/json`
 
-Corpo:
+Corpo: Não tem
 
 Códigos de retorno:
 
+| Código | Status | Retorno |
+| --- | --- | --- |
+| 200 | `success` | Ok |
+| 200 | `error` | Não há próximos eventos nesta comunidade |
+| 400 | `error` | Informe o identificador da comunidade para busca de eventos |
+
 Exemplo de retorno:
+
+```
+{
+  "result": "success",
+  "body": [{
+    ...
+  }]
+}
+```
 
 ##### Listar eventos passados de uma comunidade
 
-Rota:
+Rota: `/v1/event/list/prev/:community`
 
-Método:
+Método: `GET`
 
 Parâmetros:
--
+- `community`: Identificador do tipo namespace da comunidade
 
 Cabeçalhos:
--
+- `Content-Type: application/json`
 
-Corpo:
+Corpo: Não tem
 
 Códigos de retorno:
 
+| Código | Status | Retorno |
+| --- | --- | --- |
+| 200 | `success` | Ok |
+| 200 | `error` | Não há eventos cadastrados nesta comunidade |
+| 400 | `error` | Informe o identificador da comunidade para busca de eventos |
+
 Exemplo de retorno:
+
+```
+{
+  "result": "success",
+  "body": [{
+    ...
+  }]
+}
+```
 
 ##### Listar eventos de uma comunidade
 
-Rota:
+Rota: `/v1/event/list/community/:community`
 
-Método:
+Método: `GET`
 
 Parâmetros:
--
+- `community`: Identificador do tipo namespace da comunidade
 
 Cabeçalhos:
--
+- `Content-Type: application/json`
 
-Corpo:
+Corpo: Não tem
 
 Códigos de retorno:
 
+| Código | Status | Retorno |
+| --- | --- | --- |
+| 200 | `success` | Ok |
+| 200 | `error` | Não há eventos cadastrados nesta comunidade |
+| 400 | `error` | Informe o identificador da comunidade para busca de eventos |
+
 Exemplo de retorno:
+
+```
+{
+  "result": "success",
+  "body": [{
+    ...
+  }]
+}
+```
 
 ##### Buscar evento pelo namespace
 
-Rota:
+Rota: `/v1/event/list/namespace/:namespace`
 
-Método:
+Método: `GET`
 
 Parâmetros:
--
+- `namespace`: Identificador do tipo namespace do evento
 
 Cabeçalhos:
--
+- `Content-Type: application/json`
 
-Corpo:
+Corpo: Não tem
 
 Códigos de retorno:
 
+| Código | Status | Retorno |
+| --- | --- | --- |
+| 200 | `success` | Ok |
+| 200 | `error` | Não há eventos com o identificador informado |
+| 400 | `error` | Informe o identificador do evento |
+
 Exemplo de retorno:
+
+```
+{
+  "result": "success",
+  "body": {
+    ...
+  }
+}
+```
 
 ##### Listar eventos criados por um usuário
 
-Rota:
+Rota: `/v1/event/list/user/:user`
 
-Método:
+Método: `GET`
 
 Parâmetros:
--
+- `user`: ID do usuário
 
 Cabeçalhos:
--
+- `Content-Type: application/json`
 
-Corpo:
+Corpo: Não tem
 
 Códigos de retorno:
 
+| Código | Status | Retorno |
+| --- | --- | --- |
+| 200 | `success` | Ok |
+| 200 | `error` | Não há eventos organizados pelo usuário informado |
+| 400 | `error` | Informe o identificador do usuário |
+
 Exemplo de retorno:
+
+```
+{
+  "result": "success",
+  "body": [{
+    ...
+  }]
+}
+```
 
 ##### Buscar evento por ID
 
-Rota:
+Rota: `/v1/event/:id`
 
-Método:
+Método: `GET`
 
 Parâmetros:
--
+- `id`: ID do evento
 
 Cabeçalhos:
--
+- `Content-Type: application/json`
 
-Corpo:
+Corpo: Não tem
 
 Códigos de retorno:
 
+| Código | Status | Retorno |
+| --- | --- | --- |
+| 200 | `success` | Ok |
+| 200 | `error` | Não há eventos com o ID informado |
+| 400 | `error` | ID inválido |
+
 Exemplo de retorno:
 
-##### Listar participantes de um evento
+```
+{
+  "result": "success",
+  "body": {
+    ...
+  }
+}
+```
 
-Rota:
+##### Listar eventos que membro participa
 
-Método:
+Rota: `/v1/event/rsvp/:member`
+
+Método: `GET`
 
 Parâmetros:
--
+- `member`: ID do membro
 
 Cabeçalhos:
--
+- `Content-Type: application/json`
 
-Corpo:
+Corpo: Não tem
 
 Códigos de retorno:
 
+| Código | Status | Retorno |
+| --- | --- | --- |
+| 200 | `success` | Ok |
+| 200 | `error` | Não há participantes em eventos com o identificador informado |
+| 400 | `error` | Informe um ID válido de membro |
+
 Exemplo de retorno:
+
+```
+{
+  "result": "success",
+  "body": [{
+    ...
+  }]
+}
+```
+
+##### Buscar participante de evento
+
+Rota: `/v1/event/list/rsvp`
+
+Método: `POST`
+
+Parâmetros: Não tem
+
+Cabeçalhos:
+- `Content-Type: application/json`
+
+Corpo:
+- `member`: ID do membro
+- `event`: Identificador do tipo namespace do evento
+
+Códigos de retorno:
+
+| Código | Status | Retorno |
+| --- | --- | --- |
+| 200 | `success` | Ok |
+| 200 | `error` | Não há participantes confirmados com o identificador informado |
+| 400 | `error` | Informe os IDs do membro e do evento |
+
+Exemplo de retorno:
+
+```
+{
+  "result": "success",
+  "body": {
+    ...
+  }
+}
+```
 
 ##### Validar existência de namespace do evento no banco
 
-Rota:
+Rota: `/v1/event/validate`
 
-Método:
+Método: `POST`
 
-Parâmetros:
--
+Parâmetros: Não tem
 
 Cabeçalhos:
--
+- `Content-Type: application/json`
 
 Corpo:
+- `namespace`: Identificador do tipo namespace da comunidade
 
 Códigos de retorno:
 
+| Código | Status | Retorno |
+| --- | --- | --- |
+| 200 | `success` | Ok |
+| 200 | `error` | Não há eventos com o identificador informado |
+| 400 | `error` | Informe o identificador do evento |
+
 Exemplo de retorno:
 
-##### Cadastrar participante em evento
+```
+{
+  "result": "success",
+  "body": {
+    ...
+  }
+}
+```
 
-Rota:
+##### Adicionar participante em evento
 
-Método:
+Rota: `/v1/event/rsvp`
 
-Parâmetros:
--
+Método: `POST`
+
+Parâmetros: Não tem
 
 Cabeçalhos:
--
+- `Content-Type: application/json`
 
 Corpo:
+- `member`: ID do membro
+- `event`: Identificador do tipo namespace do evento
 
 Códigos de retorno:
 
+| Código | Status | Retorno |
+| --- | --- | --- |
+| 200 | `success` | Ok |
+| 200 | `error` | Não há eventos com o ID informado |
+| 400 | `error` | Informe os IDs do membro e do evento |
+| 500 | `error` | Falha ao adicionar novo participante no evento |
+
 Exemplo de retorno:
+
+```
+{
+  "result": "success",
+  "body": {
+    ...
+  }
+}
+```
 
 ##### Criar novo evento
 
-Rota:
+Rota: `/v1/event`
 
-Método:
+Método: `POST`
 
-Parâmetros:
--
+Parâmetros: Não tem
 
 Cabeçalhos:
--
+- `Content-Type: application/json`
 
 Corpo:
+- `title`: Título do evento
+- `date`: Data do evento
+- `online`: Informa se o evento será online ou presencial. Aceita como argumentos `true` ou `false`
+- `cover`: Endereço da imagem de capa do evento
+- `place`: Objeto com os componentes do endereço
+ - `address`: Logradouro
+ - `number`: Número
+ - `reference`: Complemento
+ - `neighborhood`: Bairro
+ - `city`: Cidade
+ - `state`: Estado
+ - `country`: País
+ - `postal_code`: CEP
+- `community`: Identificador do tipo namespace da comunidade
+- `description`: Descrição do evento
+- `user`: ID do usuário que criou o evento
 
 Códigos de retorno:
 
+| Código | Status | Retorno |
+| --- | --- | --- |
+| 200 | `success` | Ok |
+| 400 | `error` | Lista de erros |
+| 400 | `error` | ID de usuário inválido |
+| 500 | `error` | Falha ao cadastrar novo evento |
+
 Exemplo de retorno:
+
+```
+{
+  "result": "success",
+  "body": {
+    ...
+  }
+}
+```
 
 ##### Atualizar evento pelo ID
 
-Rota:
+Rota: `/v1/event/:id`
 
-Método:
+Método: `PATCH`
 
 Parâmetros:
--
+- `id`: ID do evento
 
 Cabeçalhos:
--
+- `Content-Type: application/json`
 
 Corpo:
+- `title`: Título do evento
+- `date`: Data do evento
+- `online`: Informa se o evento será online ou presencial. Aceita como argumentos `true` ou `false`
+- `cover`: Endereço da imagem de capa do evento
+- `place`: Objeto com os componentes do endereço
+ - `address`: Logradouro
+ - `number`: Número
+ - `reference`: Complemento
+ - `neighborhood`: Bairro
+ - `city`: Cidade
+ - `state`: Estado
+ - `country`: País
+ - `postal_code`: CEP
+- `description`: Descrição do evento
 
 Códigos de retorno:
 
+| Código | Status | Retorno |
+| --- | --- | --- |
+| 200 | `success` | Ok |
+| 400 | `error` | Lista de erros |
+| 400 | `error` | ID inválido |
+| 500 | `error` | Falha ao atualizar o evento |
+
 Exemplo de retorno:
+
+```
+{
+  "result": "success",
+  "body": {
+    ...
+  }
+}
+```
 
 ##### Excluir evento pelo ID
 
-Rota:
+Rota: `/v1/event/:id`
 
-Método:
+Método: `DELETE`
 
 Parâmetros:
--
+- `id`: ID do evento
 
 Cabeçalhos:
--
+- `Content-Type: application/json`
 
-Corpo:
+Corpo: Não tem
 
 Códigos de retorno:
 
+| Código | Status | Retorno |
+| --- | --- | --- |
+| 200 | `success` | Ok |
+| 400 | `error` | ID inválido |
+| 500 | `error` | Falha ao deletar o evento |
+
 Exemplo de retorno:
+
+```
+{
+  "result": "success",
+  "body": {
+    ...
+  }
+}
+```
 
 ##### Excluir participante de evento
 
-Rota:
+Rota: `/v1/event/rsvp/delete`
 
-Método:
+Método: `POST`
 
-Parâmetros:
--
+Parâmetros: Não tem
 
 Cabeçalhos:
--
+- `Content-Type: application/json`
 
 Corpo:
+- `member`: ID do membro
+- `event`: Identificador do tipo namespace do evento
 
 Códigos de retorno:
 
+| Código | Status | Retorno |
+| --- | --- | --- |
+| 200 | `success` | Ok |
+| 200 | `error` | Não há eventos com o ID informado |
+| 200 | `error` | Não há participantes confirmados no evento |
+| 200 | `error` | Membro informado não encontrado |
+| 400 | `error` | Informe os IDs do membro e do evento |
+| 500 | `error` | Falha ao remover participante do evento |
+
 Exemplo de retorno:
+
+```
+{
+  "result": "success",
+  "body": {
+    ...
+  }
+}
+```
 
 #### Member
 
 ##### Listar membros de uma comunidade
 
-Rota:
+Rota: `/v1/member/list/:community`
 
-Método:
+Método: `GET`
 
 Parâmetros:
--
+- `community`: Identificador do tipo namespace de uma comunidade
 
 Cabeçalhos:
--
+- `Content-Type: application/json`
 
-Corpo:
+Corpo: Não tem
 
 Códigos de retorno:
 
+| Código | Status | Retorno |
+| --- | --- | --- |
+| 200 | `success` | Ok |
+| 200 | `error` | Não há membros cadastrados nesta comunidade |
+| 400 | `error` | Informe o identificador da comunidade para busca de membros |
+
 Exemplo de retorno:
+
+```
+{
+  "result": "success",
+  "body": [{
+    ...
+  }]
+}
+```
 
 ##### Buscar membro pelo ID
 
-Rota:
+Rota: `/v1/member/:id`
 
-Método:
+Método: `GET`
 
 Parâmetros:
--
+- `id`: ID do membro
 
 Cabeçalhos:
--
+- `Content-Type: application/json`
 
-Corpo:
+Corpo: Não tem
 
 Códigos de retorno:
 
+| Código | Status | Retorno |
+| --- | --- | --- |
+| 200 | `success` | Ok |
+| 200 | `error` | Não há membros com o ID informado |
+| 400 | `error` | ID inválido |
+
 Exemplo de retorno:
+
+```
+{
+  "result": "success",
+  "body": {
+    ...
+  }
+}
+```
 
 ##### Buscar membro pelo ID de usuário
 
-Rota:
+Rota: `/v1/member/user`
 
-Método:
+Método: `POST`
 
-Parâmetros:
--
+Parâmetros: Não tem
 
 Cabeçalhos:
--
+- `Content-Type: application/json`
 
 Corpo:
+- `community`: Identificador do tipo namespace da comunidade
+- `user`: ID do usuário
 
 Códigos de retorno:
 
+| Código | Status | Retorno |
+| --- | --- | --- |
+| 200 | `success` | Ok |
+| 200 | `error` | Não há membros com o ID informado |
+| 400 | `error` | IDs de usuário e comunidade inválidos |
+
 Exemplo de retorno:
+
+```
+{
+  "result": "success",
+  "body": {
+    ...
+  }
+}
+```
 
 ##### Cadastrar novo membro
 
-Rota:
+Rota: `/v1/member`
 
-Método:
+Método: `POST`
 
-Parâmetros:
--
+Parâmetros: Não tem
 
 Cabeçalhos:
--
+- `Content-Type: application/json`
 
 Corpo:
+- `name`: Nome do membro
+- `surname`: Sobrenome do membro
+- `bio`: Biografia curta do membro
+- `badge`: Selo de participante. Recebe um valor de texto
+- `role`: Função do membro na comunidade. Recebe um valor de texto
+- `community`: Identificdor do tipo namespace da comunidade
+- `user`: ID do usuário associado ao membro
 
 Códigos de retorno:
 
+| Código | Status | Retorno |
+| --- | --- | --- |
+| 200 | `success` | Ok |
+| 400 | `error` | Lista de erros |
+| 400 | `error` | ID de usuário inválido |
+| 500 | `error` | Falha ao cadastrar novo membro |
+
 Exemplo de retorno:
+
+```
+{
+  "result": "success",
+  "body": {
+    ...
+  }
+}
+```
 
 ##### Atualizar membro pelo ID
 
-Rota:
+Rota: `/v1/member/:id`
 
-Método:
+Método: `PATCH`
 
 Parâmetros:
--
+- `id`: ID do membro
 
 Cabeçalhos:
--
+- `Content-Type: application/json`
 
 Corpo:
+- `name`: Nome do membro
+- `surname`: Sobrenome do membro
+- `bio`: Biografia curta do membro
+- `badge`: Selo de participante. Recebe um valor de texto
+- `role`: Função do membro na comunidade. Recebe um valor de texto
+- `community`: Identificdor do tipo namespace da comunidade
 
 Códigos de retorno:
 
+| Código | Status | Retorno |
+| --- | --- | --- |
+| 200 | `success` | Ok |
+| 400 | `error` | Lista de erros |
+| 400 | `error` | ID inválido |
+| 500 | `error` | Falha ao atualizar o membro |
+
 Exemplo de retorno:
+
+```
+{
+  "result": "success",
+  "body": {
+    ...
+  }
+}
+```
 
 ##### Excluir membro pelo ID
 
-Rota:
+Rota: `/v1/member/:id`
 
-Método:
+Método: `DELETE`
 
 Parâmetros:
--
+- `id`: ID do membro
 
 Cabeçalhos:
--
+- `Content-Type: application/json`
 
-Corpo:
+Corpo: Não tem
 
 Códigos de retorno:
 
+| Código | Status | Retorno |
+| --- | --- | --- |
+| 200 | `success` | Ok |
+| 400 | `error` | ID inválido |
+| 500 | `error` | Falha ao deletar o membro |
+
 Exemplo de retorno:
+
+```
+{
+  "result": "success",
+  "body": {
+    ...
+  }
+}
+```
 
 #### s3
 
 ##### Listar URL temporária para manipulação de bucket no S3
 
-Rota:
+Rota: `/v1/s3/sign`
 
-Método:
+Método: `POST`
 
-Parâmetros:
--
+Parâmetros: Não tem
 
 Cabeçalhos:
--
+- `Content-Type: application/json`
 
 Corpo:
+- `file_name`: Nome do arquivo a ser carregado no S3
+- `file_type`: Formato do arquivo a ser carregado no S3
 
 Códigos de retorno:
 
+| Código | Status | Retorno |
+| --- | --- | --- |
+| 200 | `success` | Ok |
+| 400 | `error` | Informe o nome e o tipo do arquivo a ser carregado |
+| 500 | `error` | Objeto de erro do S3 |
+
 Exemplo de retorno:
+
+```
+{
+  "result": "success",
+  "body": [{
+    ...
+  }]
+}
+```
 
 #### Topic
 
 ##### Listar todos os tópicos
 
-Rota:
+Rota: `/v1/topic/list`
 
-Método:
+Método: `GET`
 
-Parâmetros:
--
+Parâmetros: Não tem
 
 Cabeçalhos:
--
+- `Content-Type: application/json`
 
-Corpo:
+Corpo: Não tem
 
 Códigos de retorno:
 
+| Código | Status | Retorno |
+| --- | --- | --- |
+| 200 | `success` | Ok |
+| 200 | `error` | Não há tópicos cadastrados |
+
 Exemplo de retorno:
+
+```
+{
+  "result": "success",
+  "body": [{
+    ...
+  }]
+}
+```
 
 ##### Listar tópicos por comunidade
 
-Rota:
+Rota: `/v1/topic/list/:community`
 
-Método:
+Método: `GET`
 
 Parâmetros:
--
+- `community`: Identificador do tipo namespace da comunidade
 
 Cabeçalhos:
--
+- `Content-Type: application/json`
 
-Corpo:
+Corpo: Não tem
 
 Códigos de retorno:
 
+| Código | Status | Retorno |
+| --- | --- | --- |
+| 200 | `success` | Ok |
+| 200 | `error` | Não há tópicos cadastrados nesta comunidade |
+| 400 | `error` | Informe o identificador da comunidade para busca de tópicos |
+
 Exemplo de retorno:
+
+```
+{
+  "result": "success",
+  "body": [{
+    ...
+  }]
+}
+```
 
 ##### Buscar tópicos por palavra chave
 
-Rota:
+Rota: `/v1/topic/list/term/:term`
 
-Método:
+Método: `GET`
 
 Parâmetros:
--
+- `term`: Palavra chave para busca de tópicos
 
 Cabeçalhos:
--
+- `Content-Type: application/json`
 
-Corpo:
+Corpo: Não tem
 
 Códigos de retorno:
 
+| Código | Status | Retorno |
+| --- | --- | --- |
+| 200 | `success` | Ok |
+| 200 | `error` | Não há tópicos cadastrados com o termo informado |
+| 400 | `error` | Informe o termo para busca de tópicos |
+
 Exemplo de retorno:
+
+```
+{
+  "result": "success",
+  "body": [{
+    ...
+  }]
+}
+```
 
 ##### Buscar tópico por ID
 
-Rota:
+Rota: `/v1/topic/:id`
 
-Método:
+Método: `GET`
 
 Parâmetros:
--
+- `id`: ID do tópico
 
 Cabeçalhos:
--
+- `Content-Type: application/json`
 
-Corpo:
+Corpo: Não tem
 
 Códigos de retorno:
 
+| Código | Status | Retorno |
+| --- | --- | --- |
+| 200 | `success` | Ok |
+| 200 | `error` | Não há tópicos com o ID informado |
+| 400 | `error` | ID inválido |
+
 Exemplo de retorno:
+
+```
+{
+  "result": "success",
+  "body": {
+    ...
+  }
+}
+```
 
 ##### Criar novo tópico
 
-Rota:
+Rota: `/v1/topic`
 
-Método:
+Método: `POST`
 
-Parâmetros:
--
+Parâmetros: Não tem
 
 Cabeçalhos:
--
+- `Content-Type: application/json`
 
 Corpo:
+- `title`: Assunto do tópico
+- `description`: Descrição do tópico
 
 Códigos de retorno:
 
+| Código | Status | Retorno |
+| --- | --- | --- |
+| 200 | `success` | Ok |
+| 400 | `error` | Lista de erros |
+| 500 | `error` | Falha ao cadastrar novo tópico |
+
 Exemplo de retorno:
+
+```
+{
+  "result": "success",
+  "body": {
+    ...
+  }
+}
+```
 
 ##### Atualizar tópico pelo ID
 
-Rota:
+Rota: `/v1/topic/:id`
 
-Método:
+Método: `PATCH`
 
 Parâmetros:
--
+- `id`: ID do tópico
 
 Cabeçalhos:
--
+- `Content-Type: application/json`
 
 Corpo:
+- `title`: Assunto do tópico
+- `description`: Descrição do tópico
+- `open`: O tópico está aberto ou fechado. Aceita os valores `true` ou `false`
 
 Códigos de retorno:
 
+| Código | Status | Retorno |
+| --- | --- | --- |
+| 200 | `success` | Ok |
+| 400 | `error` | Lista de erros |
+| 400 | `error` | ID inválido |
+| 500 | `error` | Falha ao atualizar o tópico |
+
 Exemplo de retorno:
+
+```
+{
+  "result": "success",
+  "body": {
+    ...
+  }
+}
+```
 
 ##### Excluir tópico pelo ID
 
-Rota:
+Rota: `/v1/topic/:id`
 
-Método:
+Método: `DELETE`
 
 Parâmetros:
--
+- `id`: ID do tópico
 
 Cabeçalhos:
--
+- `Content-Type: application/json`
 
-Corpo:
+Corpo: Não tem
 
 Códigos de retorno:
 
+| Código | Status | Retorno |
+| --- | --- | --- |
+| 200 | `success` | Ok |
+| 400 | `error` | ID inválido |
+| 500 | `error` | Falha ao deletar o tópico |
+
 Exemplo de retorno:
+
+```
+{
+  "result": "success",
+  "body": {
+    ...
+  }
+}
+```
 
 #### User
 
 ##### Buscar usuário pelo ID
 
-Rota:
+Rota: `/v1/user/:id`
 
-Método:
+Método: `GET`
 
 Parâmetros:
--
+- `id`: ID do usuário
 
 Cabeçalhos:
--
+- `Content-Type: application/json`
 
-Corpo:
+Corpo: Não tem
 
 Códigos de retorno:
 
+| Código | Status | Retorno |
+| --- | --- | --- |
+| 200 | `success` | Ok |
+| 200 | `error` | Não há usuários com o ID informado |
+| 400 | `error` | ID inválido |
+
 Exemplo de retorno:
+
+```
+{
+  "result": "success",
+  "body": {
+    ...
+  }
+}
+```
 
 ##### Buscar usuário pelo ID da conta
 
-Rota:
+Rota: `/v1/user/account/:account`
 
-Método:
+Método: `GET`
 
 Parâmetros:
--
+- `account`: ID da conta
 
 Cabeçalhos:
--
+- `Content-Type: application/json`
 
-Corpo:
+Corpo: Não tem
 
 Códigos de retorno:
 
+| Código | Status | Retorno |
+| --- | --- | --- |
+| 200 | `success` | Ok |
+| 200 | `error` | Não há usuários com o ID informado |
+| 400 | `error` | ID inválido |
+
 Exemplo de retorno:
+
+```
+{
+  "result": "success",
+  "body": {
+    ...
+  }
+}
+```
 
 ##### Criar novo usuário
 
-Rota:
+Rota: `/v1/user`
 
-Método:
+Método: `POST`
 
-Parâmetros:
--
+Parâmetros: Não tem
 
 Cabeçalhos:
--
+- `Content-Type: application/json`
 
 Corpo:
+- `name`: Nome do usuário
+- `surname`: Sobrenome do usuário
+- `picture`: Endereço da imagem de perfil do usuário
+- `cover`: Endereço da imagem de capa do usuário
+- `bio`: Biografia curta do usuário
+- `account`: ID da conta
 
 Códigos de retorno:
 
+| Código | Status | Retorno |
+| --- | --- | --- |
+| 200 | `success` | Ok |
+| 400 | `error` | Lista de erros |
+| 400 | `error` | ID de conta inválido |
+| 500 | `error` | Falha ao cadastrar novo usuário |
+
 Exemplo de retorno:
+
+```
+{
+  "result": "success",
+  "body": {
+    ...
+  }
+}
+```
 
 ##### Atualizar usuário pelo ID
 
-Rota:
+Rota: `/v1/user/:id`
 
-Método:
+Método: `PATCH`
 
 Parâmetros:
--
+- `id`: ID do usuário
 
 Cabeçalhos:
--
+- `Content-Type: application/json`
 
 Corpo:
+- `name`: Nome do usuário
+- `surname`: Sobrenome do usuário
+- `picture`: Endereço da imagem de perfil do usuário
+- `cover`: Endereço da imagem de capa do usuário
+- `bio`: Biografia curta do usuário
 
 Códigos de retorno:
 
+| Código | Status | Retorno |
+| --- | --- | --- |
+| 200 | `success` | Ok |
+| 400 | `error` | Lista de erros |
+| 400 | `error` | ID inválido |
+| 500 | `error` | Falha ao atualizar o usuário |
+
 Exemplo de retorno:
+
+```
+{
+  "result": "success",
+  "body": {
+    ...
+  }
+}
+```
 
 ##### Atualizar usuário pelo ID da conta
 
-Rota:
+Rota: `/v1/user/account/:account`
 
-Método:
+Método: `PATCH`
 
 Parâmetros:
--
+- `account`: ID da conta
 
 Cabeçalhos:
--
+- `Content-Type: application/json`
 
 Corpo:
+- `name`: Nome do usuário
+- `surname`: Sobrenome do usuário
+- `picture`: Endereço da imagem de perfil do usuário
+- `cover`: Endereço da imagem de capa do usuário
+- `bio`: Biografia curta do usuário
 
 Códigos de retorno:
 
+| Código | Status | Retorno |
+| --- | --- | --- |
+| 200 | `success` | Ok |
+| 400 | `error` | Lista de erros |
+| 400 | `error` | ID inválido |
+| 500 | `error` | Falha ao atualizar o usuário |
+
 Exemplo de retorno:
+
+```
+{
+  "result": "success",
+  "body": {
+    ...
+  }
+}
+```
 
 ##### Excluir usuário pelo ID
 
-Rota:
+Rota: `/v1/user/:id`
 
-Método:
+Método: `DELETE`
 
 Parâmetros:
--
+- `id`: ID do usuário
 
 Cabeçalhos:
--
+- `Content-Type: application/json`
 
-Corpo:
+Corpo: Não tem
 
 Códigos de retorno:
 
+| Código | Status | Retorno |
+| --- | --- | --- |
+| 200 | `success` | Ok |
+| 400 | `error` | ID inválido |
+| 500 | `error` | Falha ao deletar o usuário |
+
 Exemplo de retorno:
+
+```
+{
+  "result": "success",
+  "body": {
+    ...
+  }
+}
+```
