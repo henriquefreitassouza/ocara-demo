@@ -400,16 +400,16 @@ Parâmetros:
 - `id`: O id da conta no banco de dados
 
 Cabeçalhos:
-- `Content-Type`: Com o valor `application/json`
+- `Content-Type: application/json`
 
 Corpo: Não tem
 
 Códigos de retorno:
 
-| Código | Retorno |
-| --- | --- |
-| 200 | Ok |
-| 400 | ID inválido |
+| Código | Status | Retorno |
+| --- | --- | --- |
+| 200 | `success` | Ok |
+| 400 | `error` | ID inválido |
 
 Exemplo de retorno:
 
@@ -433,385 +433,730 @@ Exemplo de retorno:
 
 ##### Buscar conta pelo endereço de e-mail
 
-Rota:
+Rota: `/v1/account/email/:email`
 
-Método:
+Método: `GET`
 
 Parâmetros:
--
+- `email`: O e-mail do usuário
 
 Cabeçalhos:
--
+- `Content-Type: application/json`
 
-Corpo:
+Corpo: Não tem
 
 Códigos de retorno:
 
+| Código | Status | Retorno |
+| --- | --- | --- |
+| 200 | `success` | Ok |
+| 200 | `error` | E-mail não encontrado |
+| 400 | `error` | E-mail inválido |
+
 Exemplo de retorno:
+
+```
+{
+  result: success,
+  body: {
+
+  }
+}
+```
 
 ##### Validar credenciais
 
-Rota:
+Rota: `/v1/account/validate`
 
-Método:
+Método: `POST`
 
-Parâmetros:
--
+Parâmetros: Não tem
 
 Cabeçalhos:
--
+- `Content-Type: application/json`
 
 Corpo:
+- `email`: e-mail de acesso a conta
+- `password`: senha de acesso a conta
 
 Códigos de retorno:
 
+| Código | Status | Retorno |
+| --- | --- | --- |
+| 200 | `success` | Ok |
+| 200 | `error` | E-mail ou senha inválido(s) |
+| 400 | `error` | Informe o e-mail e a senha |
+
 Exemplo de retorno:
+
+```
+{
+  result: success,
+  body: {
+    account: "",
+    user: "",
+    email: "",
+    name: "",
+    accessToken: ""
+  }
+}
+```
 
 ##### Criar nova conta
 
-Rota:
+Rota: `/v1/account`
 
-Método:
+Método: `POST`
 
-Parâmetros:
--
+Parâmetros: Não tem
 
 Cabeçalhos:
--
+- `Content-Type: application/json`
 
 Corpo:
+- `email`: e-mail de acesso a conta
+- `password`: senha de acesso a conta
 
 Códigos de retorno:
 
+| Código | Status | Retorno |
+| --- | --- | --- |
+| 200 | `success` | Ok |
+| 400 | `error` | Lista de erros |
+| 500 | `error` | Falha ao cadastrar nova conta |
+
 Exemplo de retorno:
+
+```
+{
+  result: success,
+  body: {
+
+  }
+}
+```
 
 ##### Atualizar uma conta pelo ID
 
-Rota:
+Rota: `/v1/account/:id`
 
-Método:
+Método: `PATCH`
 
 Parâmetros:
--
+- `id`: O id da conta no banco de dados
 
 Cabeçalhos:
--
+- `Content-Type: application/json`
 
 Corpo:
+- `email`: e-mail de acesso a conta
+- `password`: senha de acesso a conta
 
 Códigos de retorno:
 
+| Código | Status | Retorno |
+| --- | --- | --- |
+| 200 | `success` | Ok |
+| 400 | `error` | Lista de erros |
+| 400 | `error` | ID inválido |
+| 500 | `error` | Falha ao atualizar a conta |
+
 Exemplo de retorno:
+
+```
+{
+  result: success,
+  body: {
+
+  }
+}
+```
 
 ##### Excluir uma conta pelo ID
 
-Rota:
+Rota: `/v1/account/:id`
 
-Método:
+Método: `DELETE`
 
 Parâmetros:
--
+- `id`: O id da conta no banco de dados
 
 Cabeçalhos:
--
+- `Content-Type: application/json`
 
-Corpo:
+Corpo: Não tem
 
 Códigos de retorno:
 
+| Código | Status | Retorno |
+| --- | --- | --- |
+| 200 | `success` | Ok |
+| 400 | `error` | ID inválido |
+| 500 | `error` | Falha ao deletar a conta |
+
 Exemplo de retorno:
+
+```
+{
+  result: success,
+  body: {
+
+  }
+}
+```
 
 #### Api
 
 ##### Validar as credenciais de uma conta de API
 
-Rota:
+Rota: `/v1/api/validate`
 
-Método:
+Método: `POST`
 
-Parâmetros:
--
+Parâmetros: Não tem
 
 Cabeçalhos:
--
+- `Content-Type: application/json`
 
 Corpo:
+- `email`: e-mail de acesso a conta de api
+- `password`: senha de acesso a conta de api
 
 Códigos de retorno:
 
+| Código | Status | Retorno |
+| --- | --- | --- |
+| 200 | `success` | Ok |
+| 200 | `error` | E-mail ou senha inválido(s) |
+| 400 | `error` | Informe o e-mail e a senha |
+
 Exemplo de retorno:
+
+```
+{
+  result: success,
+  body: {
+
+  }
+}
+```
 
 ##### Criar uma nova conta de API
 
-Rota:
+Rota: `/v1/api`
 
-Método:
+Método: `POST`
 
-Parâmetros:
--
+Parâmetros: Não tem
 
 Cabeçalhos:
--
+- `Content-Type: application/json`
 
 Corpo:
+- `email`: e-mail de acesso a conta de api
+- `password`: senha de acesso a conta de api
 
 Códigos de retorno:
 
+| Código | Status | Retorno |
+| --- | --- | --- |
+| 200 | `success` | Ok |
+| 400 | `error` | Lista de erros |
+| 500 | `error` | Falha ao cadastrar nova conta |
+
 Exemplo de retorno:
+
+```
+{
+  result: success,
+  body: {
+
+  }
+}
+```
 
 ##### Atualizar uma conta de API
 
-Rota:
+Rota: `/v1/api/:id`
 
-Método:
+Método: `PATCH`
 
 Parâmetros:
--
+- `id`: O id da conta de API no banco de dados
 
 Cabeçalhos:
--
+- `Content-Type: application/json`
 
 Corpo:
+- `email`: e-mail de acesso a conta de api
+- `password`: senha de acesso a conta de api
 
 Códigos de retorno:
 
+| Código | Status | Retorno |
+| --- | --- | --- |
+| 200 | `success` | Ok |
+| 400 | `error` | Lista de erros |
+| 400 | `error` | ID inválido |
+| 500 | `error` | Falha ao atualizar a conta |
+
 Exemplo de retorno:
+
+```
+{
+  result: success,
+  body: {
+
+  }
+}
+```
 
 ##### Excluir uma conta de API
 
-Rota:
+Rota: `/v1/api/:id`
 
-Método:
+Método: `DELETE`
 
 Parâmetros:
--
+- `id`: O id da conta de API no banco de dados
 
 Cabeçalhos:
--
+- `Content-Type: application/json`
 
-Corpo:
+Corpo: Não tem
 
 Códigos de retorno:
 
+| Código | Status | Retorno |
+| --- | --- | --- |
+| 200 | `success` | Ok |
+| 400 | `error` | ID inválido |
+| 500 | `error` | Falha ao deletar a conta |
+
 Exemplo de retorno:
+
+```
+{
+  result: success,
+  body: {
+
+  }
+}
+```
 
 #### Book
 
 ##### Listar todas as resenhas
 
-Rota:
+Rota: `/v1/book/list`
 
-Método:
+Método: `GET`
 
-Parâmetros:
--
+Parâmetros: Não tem
 
 Cabeçalhos:
--
+- `Content-Type: application/json`
 
-Corpo:
+Corpo: Não tem
 
 Códigos de retorno:
 
+| Código | Status | Retorno |
+| --- | --- | --- |
+| 200 | `success` | Ok |
+| 200 | `error` | Não há livros cadastrados |
+
 Exemplo de retorno:
+
+```
+{
+  result: success,
+  body: {
+
+  }
+}
+```
 
 ##### Listar resenhas por termo de busca
 
-Rota:
+Rota: `/v1/book/list/term/:term`
 
-Método:
+Método: `GET`
 
 Parâmetros:
--
+- `term`: palavra chave para a busca de livros por título
 
 Cabeçalhos:
--
+- `Content-Type: application/json`
 
-Corpo:
+Corpo: Não tem
 
 Códigos de retorno:
 
+| Código | Status | Retorno |
+| --- | --- | --- |
+| 200 | `success` | Ok |
+| 200 | `error` | Não há livros cadastrados com o termo informado |
+| 400 | `error` | Informe o termo para busca de livros |
+
 Exemplo de retorno:
+
+```
+{
+  result: success,
+  body: {
+
+  }
+}
+```
 
 ##### Listar resenhas por gênero literário
 
-Rota:
+Rota: `/v1/book/list/genre/:genre`
 
-Método:
+Método: `GET`
 
 Parâmetros:
--
+- `genre`: palavra chave para a busca de livros por gênero literário
 
 Cabeçalhos:
--
+- `Content-Type: application/json`
 
-Corpo:
+Corpo: Não tem
 
 Códigos de retorno:
 
+| Código | Status | Retorno |
+| --- | --- | --- |
+| 200 | `success` | Ok |
+| 200 | `error` | Não há livros cadastrados com o gênero literário informado |
+| 400 | `error` | Informe o gênero literário para busca de livros |
+
 Exemplo de retorno:
+
+```
+{
+  result: success,
+  body: {
+
+  }
+}
+```
 
 ##### Listar gêneros literários
 
-Rota:
+Rota: `/v1/book/list/genre`
 
-Método:
+Método: `GET`
 
-Parâmetros:
--
+Parâmetros: Não tem
 
 Cabeçalhos:
--
+- `Content-Type: application/json`
 
-Corpo:
+Corpo: Não tem
 
 Códigos de retorno:
 
+| Código | Status | Retorno |
+| --- | --- | --- |
+| 200 | `success` | Ok |
+| 200 | `error` | Não há gêneros literários cadastrados |
+
 Exemplo de retorno:
+
+```
+{
+  result: success,
+  body: {
+
+  }
+}
+```
 
 ##### Buscar livro pelo namespace
 
-Rota:
+Rota: `/v1/book/list/namespace/:namespace`
 
-Método:
+Método: `GET`
 
 Parâmetros:
--
+- `namespace`: o identificador do tipo namespace do livro
 
 Cabeçalhos:
--
+- `Content-Type: application/json`
 
-Corpo:
+Corpo: Não tem
 
 Códigos de retorno:
 
+| Código | Status | Retorno |
+| --- | --- | --- |
+| 200 | `success` | Ok |
+| 200 | `error` | Não há livros com o identificador informado |
+| 400 | `error` | Informe o identificador do livro |
+
 Exemplo de retorno:
+
+```
+{
+  result: success,
+  body: {
+
+  }
+}
+```
 
 ##### Buscar livros cadastrados por um usuário
 
-Rota:
+Rota: `/v1/book/list/user/:user`
 
-Método:
+Método: `GET`
 
 Parâmetros:
--
+- `user`: ID do usuário que cadastrou o livro
 
 Cabeçalhos:
--
+- `Content-Type: application/json`
 
-Corpo:
+Corpo: Não tem
 
 Códigos de retorno:
 
+| Código | Status | Retorno |
+| --- | --- | --- |
+| 200 | `success` | Ok |
+| 200 | `error` | Não há livros resenhados pelo usuário informado |
+| 400 | `error` | Informe o identificador do usuário |
+
 Exemplo de retorno:
+
+```
+{
+  result: success,
+  body: {
+
+  }
+}
+```
 
 ##### Buscar livro pelo ID
 
-Rota:
+Rota: `/v1/book/:id`
 
-Método:
+Método: `GET`
 
 Parâmetros:
--
+- `id`: O id do livro
 
 Cabeçalhos:
--
+- `Content-Type: application/json`
 
-Corpo:
+Corpo: Não tem
 
 Códigos de retorno:
 
+| Código | Status | Retorno |
+| --- | --- | --- |
+| 200 | `success` | Ok |
+| 200 | `error` | Não há livros com o ID informado |
+| 400 | `error` | ID inválido |
+
 Exemplo de retorno:
+
+```
+{
+  result: success,
+  body: {
+
+  }
+}
+```
 
 ##### Validar existência de gênero literário no banco
 
-Rota:
+Rota: `/v1/book/validate/genre`
 
-Método:
+Método: `POST`
 
-Parâmetros:
--
+Parâmetros: Não tem
 
 Cabeçalhos:
--
+- `Content-Type: application/json`
 
 Corpo:
+- `genre`: palavra chave para a busca de livros por gênero literário
 
 Códigos de retorno:
 
+| Código | Status | Retorno |
+| --- | --- | --- |
+| 200 | `success` | Ok |
+| 200 | `error` | Não há gêneros literários cadastrados com o termo informado |
+| 400 | `error` | Informe o gênero literário |
+
 Exemplo de retorno:
+
+```
+{
+  result: success,
+  body: ""
+}
+```
 
 ##### Validar existência de namespace
 
-Rota:
+Rota: `/v1/book/validate`
 
-Método:
+Método: `POST`
 
-Parâmetros:
--
+Parâmetros: Não tem
 
 Cabeçalhos:
--
+- `Content-Type: application/json`
 
 Corpo:
+- `namespace`: o identificador do tipo namespace do livro
 
 Códigos de retorno:
 
+| Código | Status | Retorno |
+| --- | --- | --- |
+| 200 | `success` | Ok |
+| 200 | `error` | Não há livros com o identificador informado |
+| 400 | `error` | Informe o identificador do livro |
+
 Exemplo de retorno:
+
+```
+{
+  result: success,
+  body: ""
+}
+```
 
 ##### Criar novo livro
 
-Rota:
+Rota: `/v1/book`
 
-Método:
+Método: `POST`
 
-Parâmetros:
--
+Parâmetros: Não tem
 
 Cabeçalhos:
--
+- `Content-Type: application/json`
 
 Corpo:
+- `title`: O título do livro
+- `isbn`: O código ISBN do livro
+- `publisher`: A editora que publicou o livro
+- `author`: Uma lista de autores contendo objetos com as propriedades `name` e `role`
+- `genre`: Gênero literário
+- `edition`: Edição do livro
+- `year_published`: Ano de publicação
+- `excerpt`: Resenha do livro
+- `cover`: Endereço da imagem de capa do livro
+- `user`: ID do usuário que cadastrou o livro
+
+O parâmetro `namespace` não precisa ser informado, ele é gerado automaticamente com base no título do livro e em uma sequência alfanumérica aleatória de caracteres.
 
 Códigos de retorno:
 
+| Código | Status | Retorno |
+| --- | --- | --- |
+| 200 | `success` | Ok |
+| 400 | `error` | ID de usuário inválido |
+| 400 | `error` | Lista de erros |
+| 500 | `error` | Falha ao cadastrar novo livro |
+
 Exemplo de retorno:
+
+```
+{
+  result: success,
+  body: {
+
+  }
+}
+```
 
 ##### Atualizar livro pelo ID
 
-Rota:
+Rota: `/v1/book/:id`
 
-Método:
+Método: `PATCH`
 
 Parâmetros:
--
+- `id`: O id do livro
 
 Cabeçalhos:
--
+- `Content-Type: application/json`
 
 Corpo:
+- `title`: O título do livro
+- `isbn`: O código ISBN do livro
+- `publisher`: A editora que publicou o livro
+- `author`: Uma lista de autores contendo objetos com as propriedades `name` e `role`
+- `genre`: Gênero literário
+- `edition`: Edição do livro
+- `year_published`: Ano de publicação
+- `excerpt`: Resenha do livro
+- `cover`: Endereço da imagem de capa do livro
+
+O `namespace` não é atualizado ao atualizar o título do livro. Ele permanece com o valor de quando foi criado.
 
 Códigos de retorno:
 
+| Código | Status | Retorno |
+| --- | --- | --- |
+| 200 | `success` | Ok |
+| 400 | `error` | ID inválido |
+| 400 | `error` | Lista de erros |
+| 500 | `error` | Falha ao atualizar o livro |
+
 Exemplo de retorno:
+
+```
+{
+  result: success,
+  body: {
+
+  }
+}
+```
 
 ##### Excluir um livro
 
-Rota:
+Rota: `/v1/book/:id`
 
-Método:
+Método: `DELETE`
 
 Parâmetros:
--
+- `id`: O id do livro
 
 Cabeçalhos:
--
+- `Content-Type: application/json`
 
-Corpo:
+Corpo: Não tem
 
 Códigos de retorno:
 
+| Código | Status | Retorno |
+| --- | --- | --- |
+| 200 | `success` | Ok |
+| 400 | `error` | ID inválido |
+| 500 | `error` | Falha ao deletar o livro |
+
 Exemplo de retorno:
+
+```
+{
+  result: success,
+  body: {
+
+  }
+}
+```
 
 #### Community
 
